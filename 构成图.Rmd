@@ -1,0 +1,54 @@
+#导入包
+
+```{r}
+library(pacman)
+p_load(reader,
+       readxl,
+       openxlsx,
+       tidyverse,
+       dplyr,
+       tidyr,
+       ggplot2,
+       ggthemes,
+       ggsci,
+       ggprism,
+       patchwork
+)
+```
+
+#读取数据
+
+```{r echo=FALSE}
+lm1 <- read.xlsx("~/desktop/AA.xlsx")
+str(lm) #解构数据集
+```
+
+# 玫瑰图
+
+```{r}
+   ggplot(data = lm) +
+   aes(x = Team, y = HIRD) + 
+   geom_bar(stat = "identity", alpha = 0.7) + 
+   coord_polar()
+```
+
+# 甜甜圈图
+
+```{r}
+  ggplot(data = lm) + 
+  aes(x = Team, y = HIRD) +
+  geom_col() +
+  coord_polar(theta = "y") 
+
+```
+
+# 饼图
+
+```{r}
+  ggplot(data = lm) + 
+  aes(x = Team, y = HIRD) +
+  geom_bar(width = 1, stat = 'identity') +
+  coord_polar("y", start = 0)
+
+```
+

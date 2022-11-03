@@ -1,0 +1,39 @@
+#导入包
+
+```{r}
+library(pacman)
+p_load(reader,
+       readxl,
+       openxlsx,
+       tidyverse,
+       dplyr,
+       tidyr,
+       ggplot2,
+       ggthemes,
+       ggsci,
+       ggprism,
+       patchwork
+)
+```
+
+#读取数据
+
+```{r echo=FALSE}
+lm1 <- read.xlsx("~/desktop/AA1.xlsx")
+str(lm1) #解构数据集
+```
+
+```{r}
+   
+   ggplot(data = lm1) +
+   aes(x = Team, y = HIRD, fill = Location )+
+   geom_boxplot() +
+   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+   labs(title = 'The relationship of Team and HIRD')
+```
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+# 作者简介 {#author .unnumbered}
+
+上不了厅堂，下得了厨房。敲得了代码，逮得住蟑螂。
+
+#导入包
+
+```{r}
+library(pacman)
+p_load(reader,
+       readxl,
+       openxlsx,
+       tidyverse,
+       dplyr,
+       tidyr,
+       ggplot2,
+       ggthemes,
+       ggsci,
+       ggprism,
+       patchwork
+)
+```
+
+#读取数据
+
+```{r echo=FALSE}
+lm <- read.xlsx("~/desktop/AA.xlsx")
+str(lm) #解构数据集
+```
+
+```{r}
+  ggplot(data=lm)+ 
+  aes(x=BP,y=Shot)+
+  geom_point()+
+  facet_wrap(~Team)+
+  stat_smooth(method = 'loess', color = 'red')+
+  #coord_fixed()+
+  #scale_color_nejm() +
+  theme_classic() +
+
+  labs(title = "picture")
+
+```
