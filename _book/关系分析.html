@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 6 章 关系分析 | 麻麻说我们可以用 R Markdown 写书了</title>
+  <meta name="description" content="一个简单的中文书示例。" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 6 章 关系分析 | 麻麻说我们可以用 R Markdown 写书了" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="一个简单的中文书示例。" />
+  <meta name="github-repo" content="yihui/bookdown-chinese" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 6 章 关系分析 | 麻麻说我们可以用 R Markdown 写书了" />
+  
+  <meta name="twitter:description" content="一个简单的中文书示例。" />
+  
+
+<meta name="author" content="张三" />
+
+
+<meta name="date" content="2022-11-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tidyverse简介.html"/>
+<link rel="next" href="r-shiny.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 牛刀小试</a></li>
+<li class="chapter" data-level="2" data-path="wind.html"><a href="wind.html"><i class="fa fa-check"></i><b>2</b> 白苹风末</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="wind.html"><a href="wind.html#张老爷子"><i class="fa fa-check"></i><b>2.1</b> 张老爷子</a></li>
+<li class="chapter" data-level="2.2" data-path="wind.html"><a href="wind.html#彭大将领"><i class="fa fa-check"></i><b>2.2</b> 彭大将领</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html#author"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="chapter" data-level="3" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html"><i class="fa fa-check"></i><b>3</b> ggplot2语法结构——七层结构</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#第一层数据data"><i class="fa fa-check"></i><b>3.1</b> 第一层：数据（Data）</a></li>
+<li class="chapter" data-level="3.2" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#第二层视觉映射aesthetics"><i class="fa fa-check"></i><b>3.2</b> 第二层：视觉映射（Aesthetics）</a></li>
+<li class="chapter" data-level="3.3" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#第三层几何对象geometries"><i class="fa fa-check"></i><b>3.3</b> 第三层：几何对象（Geometries）</a></li>
+<li class="chapter" data-level="3.4" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#coordinate-systems"><i class="fa fa-check"></i><b>3.4</b> Coordinate systems</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#线性坐标系统"><i class="fa fa-check"></i><b>3.4.1</b> 线性坐标系统</a></li>
+<li class="chapter" data-level="3.4.2" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#非线性坐标系统"><i class="fa fa-check"></i><b>3.4.2</b> 非线性坐标系统</a></li>
+<li class="chapter" data-level="3.4.3" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#scale"><i class="fa fa-check"></i><b>3.4.3</b> Scale</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#theme-systems"><i class="fa fa-check"></i><b>3.5</b> Theme systems</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#简介"><i class="fa fa-check"></i><b>3.5.1</b> 简介</a></li>
+<li class="chapter" data-level="3.5.2" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#完整的主题"><i class="fa fa-check"></i><b>3.5.2</b> 完整的主题</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#修改主题组件"><i class="fa fa-check"></i><b>3.6</b> 修改主题组件</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#主题元素"><i class="fa fa-check"></i><b>3.6.1</b> 主题元素</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="r语言简介.html"><a href="r语言简介.html"><i class="fa fa-check"></i><b>4</b> R语言简介</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="r语言简介.html"><a href="r语言简介.html#数据可视化和探索"><i class="fa fa-check"></i><b>4.1</b> 数据可视化和探索</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="r语言简介.html"><a href="r语言简介.html#ggplot2"><i class="fa fa-check"></i><b>4.1.1</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="r语言简介.html"><a href="r语言简介.html#数据处理和转换"><i class="fa fa-check"></i><b>4.2</b> 数据处理和转换</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="r语言简介.html"><a href="r语言简介.html#dplyr"><i class="fa fa-check"></i><b>4.2.1</b> dplyr</a></li>
+<li class="chapter" data-level="4.2.2" data-path="r语言简介.html"><a href="r语言简介.html#tidyr"><i class="fa fa-check"></i><b>4.2.2</b> tidyr</a></li>
+<li class="chapter" data-level="4.2.3" data-path="r语言简介.html"><a href="r语言简介.html#stringr"><i class="fa fa-check"></i><b>4.2.3</b> stringr</a></li>
+<li class="chapter" data-level="4.2.4" data-path="r语言简介.html"><a href="r语言简介.html#forcats"><i class="fa fa-check"></i><b>4.2.4</b> forcats</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="r语言简介.html"><a href="r语言简介.html#数据导入和管理"><i class="fa fa-check"></i><b>4.3</b> 数据导入和管理</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="r语言简介.html"><a href="r语言简介.html#tibble"><i class="fa fa-check"></i><b>4.3.1</b> tibble</a></li>
+<li class="chapter" data-level="4.3.2" data-path="r语言简介.html"><a href="r语言简介.html#readr"><i class="fa fa-check"></i><b>4.3.2</b> readr</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="r语言简介.html"><a href="r语言简介.html#功能性编程"><i class="fa fa-check"></i><b>4.4</b> 功能性编程</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="r语言简介.html"><a href="r语言简介.html#purrr"><i class="fa fa-check"></i><b>4.4.1</b> purrr</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="tidyverse简介.html"><a href="tidyverse简介.html"><i class="fa fa-check"></i><b>5</b> Tidyverse简介</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据可视化和探索-1"><i class="fa fa-check"></i><b>5.1</b> 数据可视化和探索</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#ggplot2-1"><i class="fa fa-check"></i><b>5.1.1</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据处理和转换-1"><i class="fa fa-check"></i><b>5.2</b> 数据处理和转换</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#dplyr-1"><i class="fa fa-check"></i><b>5.2.1</b> dplyr</a></li>
+<li class="chapter" data-level="5.2.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#tidyr-1"><i class="fa fa-check"></i><b>5.2.2</b> tidyr</a></li>
+<li class="chapter" data-level="5.2.3" data-path="tidyverse简介.html"><a href="tidyverse简介.html#stringr-1"><i class="fa fa-check"></i><b>5.2.3</b> stringr</a></li>
+<li class="chapter" data-level="5.2.4" data-path="tidyverse简介.html"><a href="tidyverse简介.html#forcats-1"><i class="fa fa-check"></i><b>5.2.4</b> forcats</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据导入和管理-1"><i class="fa fa-check"></i><b>5.3</b> 数据导入和管理</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#tibble-1"><i class="fa fa-check"></i><b>5.3.1</b> tibble</a></li>
+<li class="chapter" data-level="5.3.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#readr-1"><i class="fa fa-check"></i><b>5.3.2</b> readr</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="tidyverse简介.html"><a href="tidyverse简介.html#功能性编程-1"><i class="fa fa-check"></i><b>5.4</b> 功能性编程</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#purrr-1"><i class="fa fa-check"></i><b>5.4.1</b> purrr</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="tidyverse简介.html"><a href="tidyverse简介.html#介绍"><i class="fa fa-check"></i><b>5.5</b> 介绍</a></li>
+<li class="chapter" data-level="5.6" data-path="tidyverse简介.html"><a href="tidyverse简介.html#章节结构"><i class="fa fa-check"></i><b>5.6</b> 章节结构</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="关系分析.html"><a href="关系分析.html"><i class="fa fa-check"></i><b>6</b> 关系分析</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="关系分析.html"><a href="关系分析.html#相关分析"><i class="fa fa-check"></i><b>6.1</b> 相关分析</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="关系分析.html"><a href="关系分析.html#概念"><i class="fa fa-check"></i><b>6.1.1</b> 概念</a></li>
+<li class="chapter" data-level="6.1.2" data-path="关系分析.html"><a href="关系分析.html#相关系数及其计算"><i class="fa fa-check"></i><b>6.1.2</b> 相关系数及其计算</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="关系分析.html"><a href="关系分析.html#一元与多元回归"><i class="fa fa-check"></i><b>6.2</b> 一元与多元回归</a></li>
+<li class="chapter" data-level="6.3" data-path="关系分析.html"><a href="关系分析.html#普通最小二乘法回归"><i class="fa fa-check"></i><b>6.3</b> 普通最小二乘法回归</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="关系分析.html"><a href="关系分析.html#多元回归分析"><i class="fa fa-check"></i><b>6.3.1</b> 多元回归分析</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="关系分析.html"><a href="关系分析.html#logistic回归"><i class="fa fa-check"></i><b>6.4</b> Logistic回归</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="关系分析.html"><a href="关系分析.html#分组数据的logistics回归模型"><i class="fa fa-check"></i><b>6.4.1</b> 分组数据的Logistics回归模型</a></li>
+<li class="chapter" data-level="6.4.2" data-path="关系分析.html"><a href="关系分析.html#未分组数据的logistics回归模型"><i class="fa fa-check"></i><b>6.4.2</b> 未分组数据的Logistics回归模型</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="r-shiny.html"><a href="r-shiny.html"><i class="fa fa-check"></i><b>7</b> R shiny</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="r-shiny.html"><a href="r-shiny.html#介绍-1"><i class="fa fa-check"></i><b>7.1</b> 介绍</a></li>
+<li class="chapter" data-level="7.2" data-path="r-shiny.html"><a href="r-shiny.html#章节结构-1"><i class="fa fa-check"></i><b>7.2</b> 章节结构</a></li>
+<li class="chapter" data-level="7.3" data-path="r-shiny.html"><a href="r-shiny.html#书的编译"><i class="fa fa-check"></i><b>7.3</b> 书的编译</a></li>
+<li class="chapter" data-level="7.4" data-path="r-shiny.html"><a href="r-shiny.html#交叉引用"><i class="fa fa-check"></i><b>7.4</b> 交叉引用</a></li>
+<li class="chapter" data-level="7.5" data-path="r-shiny.html"><a href="r-shiny.html#数学公式和公式编号"><i class="fa fa-check"></i><b>7.5</b> 数学公式和公式编号</a></li>
+<li class="chapter" data-level="7.6" data-path="r-shiny.html"><a href="r-shiny.html#定理类编号"><i class="fa fa-check"></i><b>7.6</b> 定理类编号</a></li>
+<li class="chapter" data-level="7.7" data-path="r-shiny.html"><a href="r-shiny.html#文献引用"><i class="fa fa-check"></i><b>7.7</b> 文献引用</a></li>
+<li class="chapter" data-level="7.8" data-path="r-shiny.html"><a href="r-shiny.html#插图"><i class="fa fa-check"></i><b>7.8</b> 插图</a></li>
+<li class="chapter" data-level="7.9" data-path="r-shiny.html"><a href="r-shiny.html#markdown表格"><i class="fa fa-check"></i><b>7.9</b> Markdown表格</a></li>
+<li class="chapter" data-level="7.10" data-path="r-shiny.html"><a href="r-shiny.html#r-blogdown-简介和安装"><i class="fa fa-check"></i><b>7.10</b> R blogdown 简介和安装</a></li>
+<li class="chapter" data-level="7.11" data-path="r-shiny.html"><a href="r-shiny.html#安装"><i class="fa fa-check"></i><b>7.11</b> 安装</a>
+<ul>
+<li class="chapter" data-level="7.11.1" data-path="r-shiny.html"><a href="r-shiny.html#blogdown"><i class="fa fa-check"></i><b>7.11.1</b> blogdown</a></li>
+<li class="chapter" data-level="7.11.2" data-path="r-shiny.html"><a href="r-shiny.html#hugo-框架"><i class="fa fa-check"></i><b>7.11.2</b> Hugo 框架</a></li>
+</ul></li>
+<li class="chapter" data-level="7.12" data-path="r-shiny.html"><a href="r-shiny.html#用-r-blogdown-搭建个人博客"><i class="fa fa-check"></i><b>7.12</b> 用 R blogdown 搭建个人博客</a>
+<ul>
+<li class="chapter" data-level="7.12.1" data-path="r-shiny.html"><a href="r-shiny.html#创建示例网站"><i class="fa fa-check"></i><b>7.12.1</b> 创建示例网站</a></li>
+<li class="chapter" data-level="7.12.2" data-path="r-shiny.html"><a href="r-shiny.html#发布网站"><i class="fa fa-check"></i><b>7.12.2</b> 发布网站</a></li>
+<li class="chapter" data-level="7.12.3" data-path="r-shiny.html"><a href="r-shiny.html#网站更新"><i class="fa fa-check"></i><b>7.12.3</b> 网站更新</a></li>
+<li class="chapter" data-level="7.12.4" data-path="r-shiny.html"><a href="r-shiny.html#发布新帖子"><i class="fa fa-check"></i><b>7.12.4</b> 发布新帖子</a></li>
+<li class="chapter" data-level="7.12.5" data-path="r-shiny.html"><a href="r-shiny.html#自动同步"><i class="fa fa-check"></i><b>7.12.5</b> 自动同步</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="玫瑰图.html"><a href="玫瑰图.html"><i class="fa fa-check"></i><b>8</b> 玫瑰图</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">麻麻说我们可以用 R Markdown 写书了</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="关系分析" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">第 6 章</span> 关系分析<a href="关系分析.html#关系分析" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="相关分析" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> 相关分析<a href="关系分析.html#相关分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="概念" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> 概念<a href="关系分析.html#概念" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>直线相关：是一种研究两个变量之前的线性相关关系（相关的方向和密切程度）的一种统计方法</p>
+<p>注：相关系数等于0时，只能说明两变量间无直线关系，不能说两变量无关</p>
+</div>
+<div id="相关系数及其计算" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> 相关系数及其计算<a href="关系分析.html#相关系数及其计算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>相关系数：又称Pearson积差相关系数，是说明具有直线相关关系的两个数值变量之间相关的方向和密切程度的统计量。</li>
+</ol>
+<p>2.计算公式： <span class="math display">\[
+r = \frac{l_{XY}}{\sqrt{l_{XX}l_{YY}}} = \frac{\sum (X-\bar{X})(Y-\bar{Y})}{\sqrt{\sum (X-\bar{X})^2\sum (Y-\bar{Y})^2}}
+\]</span> 其中<span class="math inline">\(l_{XY}\)</span>表示<span class="math inline">\(X\)</span>与<span class="math inline">\(Y\)</span>的离均差积和，<span class="math inline">\(l_{XX}\)</span>表示<span class="math inline">\(X\)</span>的离均差平方和，<span class="math inline">\(l_{YY}\)</span>表示<span class="math inline">\(Y\)</span>的离均差平方和。</p>
+<p>相关系数是没有单位的，取值范围为<span class="math inline">\([-1,1]\)</span>. 当<span class="math inline">\(r &gt; 0\)</span>时，两随机变量为正相关；当<span class="math inline">\(r &lt;0\)</span>时，两随机变量为负相关; 当<span class="math inline">\(|r| = 1\)</span>时，两随机变量完全相关；当<span class="math inline">\(|r| = 0\)</span>时, 两随机变量无直线关系.</p>
+</div>
+</div>
+<div id="一元与多元回归" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> 一元与多元回归<a href="关系分析.html#一元与多元回归" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>###概念 1.回归：是分析研究变量与变量之间的关系的一种行为，也可以说是回归于事物本来的面目！</p>
+<p>2.回归分析：指的是确定两种或两种以上变量间相互依赖的定量关系的一种统计分析方法。</p>
+<p>回归分析按照涉及的变量的多少，分为一元回归和多元回归分析；按照因变量的多少，可分为简单回归分析和多重回归分析；按照自变量和因变量之间的关系类型，可分为线性回归分析和非线性回归分析。</p>
+</div>
+<div id="普通最小二乘法回归" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> 普通最小二乘法回归<a href="关系分析.html#普通最小二乘法回归" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>普通最小二乘法回归（ordinary least squares，OLS）是一类服务于正态响应变量的模型框架。包括：简单线性回归、多项式回归和多元线性回归；OLS回归是目前最常见的统计分析方法。</p>
+<p>###简单线性回归模型</p>
+<p>简单回归模型 <span class="math display">\[
+y = \beta_0 +\beta_1x+u
+\]</span> <strong>零条件均值</strong>假设下： <span class="math display">\[
+E(u) = 0 \\
+Cov(x,u) = E(xu) = 0
+\]</span> 矩估计: <span class="math display">\[
+\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{\beta}_0 -\hat{\beta}_1x_i) = 0 \\
+\frac{1}{n}\sum_{i=1}^{n}x_i(y_i-\hat{\beta}_0 -\hat{\beta}_1x_i) = 0
+\]</span> 得到估计的斜率： <span class="math display">\[
+\hat{\beta}_1 = \frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}{n}(x_i-\bar{x})^2}
+\]</span> 定义总平方和(total sum of squares, SST)，解释平方和(explained sum of squares.SSE), 残差平方和(residual sum of squares, SSR): <span class="math display">\[
+SST = \sum_{i=1}{n}(y_i-\bar{y})^2\\
+SSE = \sum_{i=1}{n}(\hat{y}_i-\bar{y})^2\\
+SSR = \sum_{i=1}{n}\hat{u}_i^2\\
+SST = SSE + SSR
+\]</span></p>
+<p>拟合优度： <span class="math display">\[
+R^2 = SSE/SST = 1 - SSR/SST
+\]</span></p>
+<div id="多元回归分析" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> 多元回归分析<a href="关系分析.html#多元回归分析" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>估计： <span class="math display">\[
+y = \beta_0+\beta_1x_1+\beta_2x_2+\cdots+\beta_kx_k + u
+\]</span> <span class="math inline">\(\hat{\beta}_i\)</span>意为排除了其他变量之后，<span class="math inline">\(x_i\)</span>对<span class="math inline">\(y\)</span>的影响。</p>
+<p>利用现有样本，以<span class="math inline">\(x_i\)</span>为因变量，其他变量为自变量做回归，得到残差；再将<span class="math inline">\(y\)</span>对OLS残差进行回归就能得到<span class="math inline">\(\hat{\beta}_i\)</span>。</p>
+</div>
+</div>
+<div id="logistic回归" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Logistic回归<a href="关系分析.html#logistic回归" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="分组数据的logistics回归模型" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> 分组数据的Logistics回归模型<a href="关系分析.html#分组数据的logistics回归模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>针对0-1型因变量产生的问题，我们对回归模型应该做出两个方面的改进。</p>
+<p>第一是回归函数应该改用限制在<span class="math inline">\([0,1]\)</span>区间内的连续曲线，而不能再沿用直线回归方程。我们常用的函数为Sigmoid函数： <span class="math display">\[
+f(x) =\frac{e^x}{1+e^x}  = \frac{1}{1+e^{-x}}
+\]</span></p>
+<p>第二，因变量<span class="math inline">\(y_i\)</span>本身只取0，1两个离散值，不适于直接作为回归模型中的因变量，由于回归函数<span class="math inline">\(E(y_i) = \pi_i = \beta_0+\beta_1x_i\)</span>表示在自变量为<span class="math inline">\(x_i\)</span>的条件下<span class="math inline">\(y_i\)</span>的平均值，而<span class="math inline">\(y_i\)</span>是0-1型随机变量，因而<span class="math inline">\(E(y_i) = \pi_i\)</span>就是在自变量为<span class="math inline">\(x_i\)</span>的条件下<span class="math inline">\(y_i\)</span>等于1的比例.</p>
+</div>
+<div id="未分组数据的logistics回归模型" class="section level3 hasAnchor" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> 未分组数据的Logistics回归模型<a href="关系分析.html#未分组数据的logistics回归模型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>设<span class="math inline">\(y\)</span>是0～1型变量，<span class="math inline">\(x_1,x_2,\cdots,x_p\)</span>是与<span class="math inline">\(y\)</span>相关的确定性变量，n组观测数据为<span class="math inline">\((x_{i1},x_{i2},\cdots,x_{ip};y_i)(i=1,2,\cdots,n)\)</span>,其中<span class="math inline">\(y_1,y_2,\dots,y_n\)</span>是取值为0或1的随机变量，<span class="math inline">\(y_i\)</span>与<span class="math inline">\(x_{i1},x_{i2},\cdots,x_{ip}\)</span>的关系如下 <span class="math display">\[
+E(y_i) = \pi_i = f(\beta_0+\beta_1x_{i1}+\cdots+\beta_px_{ip})
+\]</span> 其中，函数<span class="math inline">\(f(x)\)</span>是值域在<span class="math inline">\([0,1]\)</span>区间内的单调增函数。对于logistic回归 <span class="math display">\[
+f(x) = \frac{e^x}{1+e^x}
+\]</span> 于是<span class="math inline">\(y_i\)</span>是均值为<span class="math inline">\(\pi_i = f(\beta_0+\beta_1x_{i1}+\cdots+\beta_px_{ip})\)</span>的0-1型分布，概率函数为 <span class="math display">\[
+P(y_i=1)=\pi_i\\
+P(y_i=0)=1-\pi_i
+\]</span> 可以把<span class="math inline">\(y_i\)</span>的概率函数合写为 <span class="math display">\[
+P(y_i) = \pi_i^{y_i}(1-\pi_i)^{1-y_i},y_i=0,1,i=1,2,\cdots,n
+\]</span> 于是，<span class="math inline">\(y_1,y_2,\cdots,y_n\)</span>的似然函数为 <span class="math display">\[
+L = \prod\limits_{i=1}^{n}P(y_i) = \prod\limits_{i=1}^{n}\pi_i^{y_i}(1-\pi_i)^{1-y_i}
+\]</span> 对似然函数取自然对数，得 <span class="math display">\[
+lnL = \sum_{i=1}^{n}[y_iln\pi_i+(1-y_i)ln(1-\pi_i)]\\
+   =  \sum_{i=1}^{n}[y_iln\frac{\pi_i}{1-\pi_i}+ln(1-\pi_i)]
+\]</span></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tidyverse简介.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-shiny.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/回归.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 5 章 Theme systems | 麻麻说我们可以用 R Markdown 写书了</title>
+  <meta name="description" content="一个简单的中文书示例。" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 5 章 Theme systems | 麻麻说我们可以用 R Markdown 写书了" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="一个简单的中文书示例。" />
+  <meta name="github-repo" content="yihui/bookdown-chinese" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 5 章 Theme systems | 麻麻说我们可以用 R Markdown 写书了" />
+  
+  <meta name="twitter:description" content="一个简单的中文书示例。" />
+  
+
+<meta name="author" content="张三" />
+
+
+<meta name="date" content="2022-10-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="coordinate-systems.html"/>
+<link rel="next" href="tidyverse简介.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 牛刀小试</a></li>
+<li class="chapter" data-level="2" data-path="wind.html"><a href="wind.html"><i class="fa fa-check"></i><b>2</b> 白苹风末</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="wind.html"><a href="wind.html#张老爷子"><i class="fa fa-check"></i><b>2.1</b> 张老爷子</a></li>
+<li class="chapter" data-level="2.2" data-path="wind.html"><a href="wind.html#彭大将领"><i class="fa fa-check"></i><b>2.2</b> 彭大将领</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html#author"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="chapter" data-level="3" data-path="r语言简介.html"><a href="r语言简介.html"><i class="fa fa-check"></i><b>3</b> R语言简介</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="r语言简介.html"><a href="r语言简介.html#r-blogdown-简介和安装"><i class="fa fa-check"></i><b>3.1</b> R blogdown 简介和安装</a></li>
+<li class="chapter" data-level="3.2" data-path="r语言简介.html"><a href="r语言简介.html#安装"><i class="fa fa-check"></i><b>3.2</b> 安装</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="r语言简介.html"><a href="r语言简介.html#blogdown"><i class="fa fa-check"></i><b>3.2.1</b> blogdown</a></li>
+<li class="chapter" data-level="3.2.2" data-path="r语言简介.html"><a href="r语言简介.html#hugo-框架"><i class="fa fa-check"></i><b>3.2.2</b> Hugo 框架</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="r语言简介.html"><a href="r语言简介.html#用-r-blogdown-搭建个人博客"><i class="fa fa-check"></i><b>3.3</b> 用 R blogdown 搭建个人博客</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="r语言简介.html"><a href="r语言简介.html#创建示例网站"><i class="fa fa-check"></i><b>3.3.1</b> 创建示例网站</a></li>
+<li class="chapter" data-level="3.3.2" data-path="r语言简介.html"><a href="r语言简介.html#发布网站"><i class="fa fa-check"></i><b>3.3.2</b> 发布网站</a></li>
+<li class="chapter" data-level="3.3.3" data-path="r语言简介.html"><a href="r语言简介.html#网站更新"><i class="fa fa-check"></i><b>3.3.3</b> 网站更新</a></li>
+<li class="chapter" data-level="3.3.4" data-path="r语言简介.html"><a href="r语言简介.html#发布新帖子"><i class="fa fa-check"></i><b>3.3.4</b> 发布新帖子</a></li>
+<li class="chapter" data-level="3.3.5" data-path="r语言简介.html"><a href="r语言简介.html#自动同步"><i class="fa fa-check"></i><b>3.3.5</b> 自动同步</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="r语言简介.html"><a href="r语言简介.html#数据可视化和探索"><i class="fa fa-check"></i><b>3.4</b> 数据可视化和探索</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="r语言简介.html"><a href="r语言简介.html#ggplot2"><i class="fa fa-check"></i><b>3.4.1</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="r语言简介.html"><a href="r语言简介.html#数据处理和转换"><i class="fa fa-check"></i><b>3.5</b> 数据处理和转换</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="r语言简介.html"><a href="r语言简介.html#dplyr"><i class="fa fa-check"></i><b>3.5.1</b> dplyr</a></li>
+<li class="chapter" data-level="3.5.2" data-path="r语言简介.html"><a href="r语言简介.html#tidyr"><i class="fa fa-check"></i><b>3.5.2</b> tidyr</a></li>
+<li class="chapter" data-level="3.5.3" data-path="r语言简介.html"><a href="r语言简介.html#stringr"><i class="fa fa-check"></i><b>3.5.3</b> stringr</a></li>
+<li class="chapter" data-level="3.5.4" data-path="r语言简介.html"><a href="r语言简介.html#forcats"><i class="fa fa-check"></i><b>3.5.4</b> forcats</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="r语言简介.html"><a href="r语言简介.html#数据导入和管理"><i class="fa fa-check"></i><b>3.6</b> 数据导入和管理</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="r语言简介.html"><a href="r语言简介.html#tibble"><i class="fa fa-check"></i><b>3.6.1</b> tibble</a></li>
+<li class="chapter" data-level="3.6.2" data-path="r语言简介.html"><a href="r语言简介.html#readr"><i class="fa fa-check"></i><b>3.6.2</b> readr</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="r语言简介.html"><a href="r语言简介.html#功能性编程"><i class="fa fa-check"></i><b>3.7</b> 功能性编程</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="r语言简介.html"><a href="r语言简介.html#purrr"><i class="fa fa-check"></i><b>3.7.1</b> purrr</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="r语言简介.html"><a href="r语言简介.html#介绍"><i class="fa fa-check"></i><b>3.8</b> 介绍</a></li>
+<li class="chapter" data-level="3.9" data-path="r语言简介.html"><a href="r语言简介.html#章节结构"><i class="fa fa-check"></i><b>3.9</b> 章节结构</a></li>
+<li class="chapter" data-level="3.10" data-path="r语言简介.html"><a href="r语言简介.html#书的编译"><i class="fa fa-check"></i><b>3.10</b> 书的编译</a></li>
+<li class="chapter" data-level="3.11" data-path="r语言简介.html"><a href="r语言简介.html#交叉引用"><i class="fa fa-check"></i><b>3.11</b> 交叉引用</a></li>
+<li class="chapter" data-level="3.12" data-path="r语言简介.html"><a href="r语言简介.html#数学公式和公式编号"><i class="fa fa-check"></i><b>3.12</b> 数学公式和公式编号</a></li>
+<li class="chapter" data-level="3.13" data-path="r语言简介.html"><a href="r语言简介.html#定理类编号"><i class="fa fa-check"></i><b>3.13</b> 定理类编号</a></li>
+<li class="chapter" data-level="3.14" data-path="r语言简介.html"><a href="r语言简介.html#文献引用"><i class="fa fa-check"></i><b>3.14</b> 文献引用</a></li>
+<li class="chapter" data-level="3.15" data-path="r语言简介.html"><a href="r语言简介.html#插图"><i class="fa fa-check"></i><b>3.15</b> 插图</a></li>
+<li class="chapter" data-level="3.16" data-path="r语言简介.html"><a href="r语言简介.html#markdown表格"><i class="fa fa-check"></i><b>3.16</b> Markdown表格</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="coordinate-systems.html"><a href="coordinate-systems.html"><i class="fa fa-check"></i><b>4</b> Coordinate systems</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="coordinate-systems.html"><a href="coordinate-systems.html#线性坐标系统"><i class="fa fa-check"></i><b>4.1</b> 线性坐标系统</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="coordinate-systems.html"><a href="coordinate-systems.html#使用-coord_cartesian放大绘图"><i class="fa fa-check"></i><b>4.1.1</b> 使用 <code>coord_cartesian()</code>放大绘图</a></li>
+<li class="chapter" data-level="4.1.2" data-path="coordinate-systems.html"><a href="coordinate-systems.html#使用coord_flip翻转坐标轴"><i class="fa fa-check"></i><b>4.1.2</b> 使用<code>coord_flip()</code>翻转坐标轴</a></li>
+<li class="chapter" data-level="4.1.3" data-path="coordinate-systems.html"><a href="coordinate-systems.html#用coord_fixed进行等比例计算"><i class="fa fa-check"></i><b>4.1.3</b> 用<code>coord_fixed()</code>进行等比例计算</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="coordinate-systems.html"><a href="coordinate-systems.html#非线性坐标系统"><i class="fa fa-check"></i><b>4.2</b> 非线性坐标系统</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="coordinate-systems.html"><a href="coordinate-systems.html#用coord_trans进行转换"><i class="fa fa-check"></i><b>4.2.1</b> 用<code>coord_trans()</code>进行转换</a></li>
+<li class="chapter" data-level="4.2.2" data-path="coordinate-systems.html"><a href="coordinate-systems.html#使用-coord_polar的极坐标"><i class="fa fa-check"></i><b>4.2.2</b> 使用 <code>coord_polar()</code>的极坐标</a></li>
+<li class="chapter" data-level="4.2.3" data-path="coordinate-systems.html"><a href="coordinate-systems.html#使用coord_map进行地图投影"><i class="fa fa-check"></i><b>4.2.3</b> 使用<code>coord_map()</code>进行地图投影</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="theme-systems.html"><a href="theme-systems.html"><i class="fa fa-check"></i><b>5</b> Theme systems</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="theme-systems.html"><a href="theme-systems.html#简介"><i class="fa fa-check"></i><b>5.1</b> 简介</a></li>
+<li class="chapter" data-level="5.2" data-path="theme-systems.html"><a href="theme-systems.html#完整的主题"><i class="fa fa-check"></i><b>5.2</b> 完整的主题</a></li>
+<li class="chapter" data-level="5.3" data-path="theme-systems.html"><a href="theme-systems.html#修改主题组件"><i class="fa fa-check"></i><b>5.3</b> 修改主题组件</a></li>
+<li class="chapter" data-level="5.4" data-path="theme-systems.html"><a href="theme-systems.html#主题元素"><i class="fa fa-check"></i><b>5.4</b> 主题元素</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="theme-systems.html"><a href="theme-systems.html#图形元素"><i class="fa fa-check"></i><b>5.4.1</b> 图形元素</a></li>
+<li class="chapter" data-level="5.4.2" data-path="theme-systems.html"><a href="theme-systems.html#轴元素"><i class="fa fa-check"></i><b>5.4.2</b> 轴元素</a></li>
+<li class="chapter" data-level="5.4.3" data-path="theme-systems.html"><a href="theme-systems.html#图例元素"><i class="fa fa-check"></i><b>5.4.3</b> 图例元素</a></li>
+<li class="chapter" data-level="5.4.4" data-path="theme-systems.html"><a href="theme-systems.html#面板元素"><i class="fa fa-check"></i><b>5.4.4</b> 面板元素</a></li>
+<li class="chapter" data-level="5.4.5" data-path="theme-systems.html"><a href="theme-systems.html#分面元素"><i class="fa fa-check"></i><b>5.4.5</b> 分面元素</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tidyverse简介.html"><a href="tidyverse简介.html"><i class="fa fa-check"></i><b>6</b> Tidyverse简介</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据可视化和探索-1"><i class="fa fa-check"></i><b>6.1</b> 数据可视化和探索</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#ggplot2-1"><i class="fa fa-check"></i><b>6.1.1</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据处理和转换-1"><i class="fa fa-check"></i><b>6.2</b> 数据处理和转换</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#dplyr-1"><i class="fa fa-check"></i><b>6.2.1</b> dplyr</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#tidyr-1"><i class="fa fa-check"></i><b>6.2.2</b> tidyr</a></li>
+<li class="chapter" data-level="6.2.3" data-path="tidyverse简介.html"><a href="tidyverse简介.html#stringr-1"><i class="fa fa-check"></i><b>6.2.3</b> stringr</a></li>
+<li class="chapter" data-level="6.2.4" data-path="tidyverse简介.html"><a href="tidyverse简介.html#forcats-1"><i class="fa fa-check"></i><b>6.2.4</b> forcats</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据导入和管理-1"><i class="fa fa-check"></i><b>6.3</b> 数据导入和管理</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#tibble-1"><i class="fa fa-check"></i><b>6.3.1</b> tibble</a></li>
+<li class="chapter" data-level="6.3.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#readr-1"><i class="fa fa-check"></i><b>6.3.2</b> readr</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="tidyverse简介.html"><a href="tidyverse简介.html#功能性编程-1"><i class="fa fa-check"></i><b>6.4</b> 功能性编程</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#purrr-1"><i class="fa fa-check"></i><b>6.4.1</b> purrr</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="tidyverse简介.html"><a href="tidyverse简介.html#介绍-1"><i class="fa fa-check"></i><b>6.5</b> 介绍</a></li>
+<li class="chapter" data-level="6.6" data-path="tidyverse简介.html"><a href="tidyverse简介.html#章节结构-1"><i class="fa fa-check"></i><b>6.6</b> 章节结构</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">麻麻说我们可以用 R Markdown 写书了</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="theme-systems" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">第 5 章</span> Theme systems<a href="theme-systems.html#theme-systems" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="简介" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> 简介<a href="theme-systems.html#简介" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在本章中，你将学习如何使用ggplot2主题系统，它允许你对绘图的非数据元素进行精细控制。主题系统并不影响数据由几何体呈现的方式，也不影响数据由比例尺转换的方式。主题并不改变绘图的感知属性，但它们可以帮助你使绘图具有美感或与现有的风格指南相匹配。主题可以让你控制诸如字体、刻度线、面板条和背景等东西。</p>
+<p>这种将控制分为数据和非数据部分的做法与基础和格子图形有很大的不同。在基础图形和网格图形中，大多数函数都需要大量的参数来指定数据和非数据的外观，这使得函数变得复杂和难以学习。 ggplot2采取了一种不同的方法：在创建绘图时，你决定数据如何显示，然后在它被创建后，你可以使用主题系统编辑渲染的每一个细节。</p>
+<p>主题系统由四个主要部分组成:</p>
+<ul>
+<li><p>主题元素指定你可以控制的非数据元素。例如，<code>plot.title</code>元素控制绘图标题的外观；<code>axis.ticks.x</code>，x轴上的刻度线；<code>legend.key.height</code>，图例中按键的高度。</p></li>
+<li><p>每个元素都与一个元素函数相关联，该函数描述了该元素的视觉属性。例如，<code>element_text()</code> 设置文本元素的字体大小、颜色和面孔，如 <code>plot.title</code>。</p></li>
+<li><p><code>theme()</code>函数，允许你通过调用元素函数来覆盖默认的主题元素，比如<code>theme(plot.title = element_text(color = "red"))</code>。</p></li>
+<li><p>完整的主题，如<code>theme_grey()</code>将所有的主题元素设置为旨在和谐地一起工作的值。</p></li>
+</ul>
+</div>
+<div id="完整的主题" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> 完整的主题<a href="theme-systems.html#完整的主题" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>ggplot2有许多内置的主题。最重要的是<code>theme_grey()</code>，这是ggplot2的标志性主题，背景为浅灰色，网格线为白色。该主题的设计是为了在支持比较的同时将数据放在前面，这也是遵循45的建议。我们仍然可以看到网格线来帮助判断位置46，但它们的视觉影响很小，我们可以很容易地将它们 “调”出来。灰色的背景使绘图具有与文本相似的印刷颜色，确保图形与文件的流程相吻合，而不会因明亮的白色背景而显得突兀。最后，灰色背景创造了一个连续的色域，确保情节被视为一个单一的视觉实体。</p>
+<p>ggplot2 1.1.0中还内置了其他七个主题。</p>
+<ul>
+<li><p><code>theme_bw()</code>: <code>theme_grey()</code>的一个变种，使用白色背景和灰色细网格线。</p></li>
+<li><p><code>theme_linedraw()</code>:一个在白色背景上只有不同宽度的黑色线条的主题，让人联想到线条画。</p></li>
+<li><p><code>theme_light()</code>：与<code>theme_linedraw()</code>类似，但使用浅灰色的线条和坐标轴，以引导人们更多地关注数据。</p></li>
+<li><p><code>theme_dark()</code>: <code>theme_light()</code>的深色表妹，有类似的线条尺寸，但背景是深色的。有助于使细小的彩色线条突出出来。</p></li>
+<li><p><code>theme_minimal()</code>:一个极简的主题，没有背景注释。</p></li>
+<li><p><code>theme_classic()</code>:一个经典的主题，有X和Y轴线，没有网格线。</p></li>
+<li><p><code>theme_void()</code>:一个完全空的主题。</p></li>
+</ul>
+<p>所有的主题都有一个<code>base_size</code>参数，用来控制基本字体的大小。基本字体大小是轴标题所使用的大小：绘图标题通常较大（1.2倍），而刻度线和条形标签较小（0.8倍）。如果你想单独控制这些尺寸，你需要按照下面的描述修改各个元素。</p>
+<p>除了每次应用主题外，你还可以用<code>theme_set()</code>改变默认主题。例如，如果你非常讨厌默认的灰色背景，可以运行<code>theme_set(theme_bw())</code>来为所有绘图使用白色背景。</p>
+<p>你并不局限于ggplot2的内置主题。其他软件包，如Jeffrey Arnold的gthemes，甚至增加了更多。</p>
+<p>完整的主题是一个很好的开始，但并没有给你很多的控制权。要修改单个元素，你需要使用<code>theme()</code>，用一个元素函数覆盖一个元素的默认设置。</p>
+</div>
+<div id="修改主题组件" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> 修改主题组件<a href="theme-systems.html#修改主题组件" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>要修改一个单独的主题组件，你可以使用类似<code>plot + theme(element.name = element_function())</code> 的代码。</p>
+<p>有四种基本类型的内置元素函数：文本、线条、矩形和空白。每个元素函数都有一组参数来控制其外观。</p>
+<ul>
+<li><code>element_text()</code> 绘制标签和标题。你可以控制字体<code>family</code>, <code>face</code>, <code>colour</code>, <code>size</code> (以点为单位), <code>hjust</code>, <code>vjust</code>, <code>angle</code> (以度为单位) 和 <code>lineheight</code> (与字体大小的比例)。关于这些参数的更多细节可以在<code>vignette("ggplot2-specs")</code>中找到。设置字体面孔是特别具有挑战性的。</li>
+</ul>
+<p>你可以用margin参数和<code>margin()</code>函数来控制文本周围的边距。 <code>margin()</code>有四个参数：在文本的顶部、右侧、底部和左侧增加的空间量（单位：点）,任何没有指定的元素都默认为0。</p>
+<ul>
+<li><p><code>element_line()</code>绘制以<code>color</code>、<code>size</code>和<code>linetype</code>为参数的线条。</p></li>
+<li><p><code>element_rect()</code>绘制矩形，主要用于背景，参数为<code>fill</code>颜色和边界<code>color</code>、<code>size</code>和<code>linetype</code>。</p></li>
+<li><p><code>element_blank()</code>不画任何东西。如果你不希望画任何东西，也不希望为该元素分配空间，就使用这个方法。下面的例子使用 <code>element_blank()</code> 来逐步抑制我们不感兴趣的元素的出现。请注意绘图是如何自动收回这些元素之前所使用的空间的：如果你不希望发生这种情况（也许是因为它们需要与页面上的其他绘图保持一致），请使用<code>color = NA</code>, <code>fill = NA</code>来创建不可见的元素，但仍然占用空间。</p></li>
+<li><p>其他一些设置需要网格单位。用<code>unit(1, "cm")</code>或<code>unit(0.25, "in")</code>创建它们。</p></li>
+</ul>
+<p>要修改未来所有情节的主题元素，请使用<code>theme_update()</code>。它返回之前的主题设置，所以你可以在完成后轻松地恢复原来的参数。</p>
+</div>
+<div id="主题元素" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> 主题元素<a href="theme-systems.html#主题元素" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>大约有40个独特的元素来控制绘图的外观。它们可以粗略地分为五类：图形、轴、图例、面板和面。下面将依次描述每一种。</p>
+<div id="图形元素" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> 图形元素<a href="theme-systems.html#图形元素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>有些元素会影响整个绘图:</p>
+<table>
+<thead>
+<tr class="header">
+<th>元素</th>
+<th>设置器</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>plot.background</code></td>
+<td><code>element_rect()</code></td>
+<td>绘图背景</td>
+</tr>
+<tr class="even">
+<td><code>plot.title</code></td>
+<td><code>element_text()</code></td>
+<td>绘图标题</td>
+</tr>
+<tr class="odd">
+<td><code>plot.margin</code></td>
+<td><code>margin()</code></td>
+<td>图形周围的边距</td>
+</tr>
+</tbody>
+</table>
+<p><code>plot.background</code>绘制一个矩形，覆盖在绘图的其他部分。默认情况下，ggplot2使用白色背景，以确保绘图在任何地方都可以使用（例如，即使你保存为png格式并放在黑色背景的幻灯片上）。当导出绘图用于其他系统时，你可能想用<code>fill = NA</code>使背景透明。同样，如果你在一个已经有边距的系统中嵌入绘图，你可能想取消内置的边距。请注意，如果你想在绘图周围画一个边框，一个小的边框仍然是必要的。</p>
+</div>
+<div id="轴元素" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> 轴元素<a href="theme-systems.html#轴元素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>轴元素控制轴的外观:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">元素</th>
+<th align="center">设置器</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>axis.line</code></td>
+<td align="center"><code>element_line()</code></td>
+<td align="center">与轴平行的线（在默认主题中隐藏）</td>
+</tr>
+<tr class="even">
+<td align="center"><code>axis.text</code></td>
+<td align="center"><code>element_text()</code></td>
+<td align="center">打勾标签</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>axis.text.x</code></td>
+<td align="center"><code>element_text()</code></td>
+<td align="center">x轴刻度标签</td>
+</tr>
+<tr class="even">
+<td align="center"><code>axis.text.y</code></td>
+<td align="center"><code>element_text()</code></td>
+<td align="center">y轴刻度线标签</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>axis.title</code></td>
+<td align="center"><code>element_text()</code></td>
+<td align="center">轴标题</td>
+</tr>
+<tr class="even">
+<td align="center"><code>axis.title.x</code></td>
+<td align="center"><code>element_text()</code></td>
+<td align="center">x轴标题</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>axis.title.y</code></td>
+<td align="center"><code>element_text()</code></td>
+<td align="center">y轴标题</td>
+</tr>
+<tr class="even">
+<td align="center"><code>axis.ticks</code></td>
+<td align="center"><code>element_line()</code></td>
+<td align="center">轴刻度线</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>axis.ticks.length</code></td>
+<td align="center"><code>unit()</code></td>
+<td align="center">勾号的长度</td>
+</tr>
+</tbody>
+</table>
+<p>注意，<code>axis.text</code>（和<code>axis.title</code>）有三种形式：<code>axis.text</code>、<code>axis.text.x</code>和<code>axis.text.y</code>。如果你想同时修改两个轴的属性，请使用第一种形式：任何你没有在<code>axis.text.x</code>和<code>axis.text.y</code>中明确设置的属性都将从<code>axis.text</code>中继承下来。</p>
+<p>最常见的调整是旋转X轴的标签，以避免长的标签重叠。如果你这样做，注意负的角度往往看起来最好，你应该设置<code>hjust=0</code>，<code>vjust=1</code>。</p>
+</div>
+<div id="图例元素" class="section level3 hasAnchor" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> 图例元素<a href="theme-systems.html#图例元素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>图例元素控制所有图例的外观。你也可以通过修改<code>guide_legend()</code>或<code>guide_colourbar()</code>中的相同元素来修改单个图例的外观。</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">元素</th>
+<th align="center">设置器</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>legend.background</code></td>
+<td align="center"><code>element_rect()</code></td>
+<td align="center">图例背景</td>
+</tr>
+<tr class="even">
+<td align="center"><code>legend.key</code></td>
+<td align="center"><code>element_rect()</code></td>
+<td align="center">图例键的背景</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>legend.key.size</code></td>
+<td align="center"><code>unit()</code></td>
+<td align="center">图例键的大小</td>
+</tr>
+<tr class="even">
+<td align="center"><code>legend.key.height</code></td>
+<td align="center"><code>unit()</code></td>
+<td align="center">图例键高度</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>legend.key.width</code></td>
+<td align="center"><code>unit()</code></td>
+<td align="center">图例键的宽度</td>
+</tr>
+<tr class="even">
+<td align="center"><code>legend.margin</code></td>
+<td align="center"><code>unit()</code></td>
+<td align="center">图例边距</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>legend.text</code></td>
+<td align="center"><code>element_text()</code></td>
+<td align="center">图例标签</td>
+</tr>
+<tr class="even">
+<td align="center"><code>legend.text.align</code></td>
+<td align="center"><code>0-1</code></td>
+<td align="center">图例标签对齐（0=右，1=左）</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>legend.title</code></td>
+<td align="center"><code>element_text()</code></td>
+<td align="center">图例名称</td>
+</tr>
+<tr class="even">
+<td align="center"><code>legend.title.align</code></td>
+<td align="center"><code>0-1</code></td>
+<td align="center">图例名称对齐（0=右，1=左）</td>
+</tr>
+</tbody>
+</table>
+<p>还有四个属性控制图例如何在绘图的上下文中布局（<code>legend.position</code>, <code>legend.direction</code>, <code>legend.justification</code>, <code>legend.box</code>）。</p>
+</div>
+<div id="面板元素" class="section level3 hasAnchor" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> 面板元素<a href="theme-systems.html#面板元素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>面板元素控制绘图面板的外观:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">元素</th>
+<th align="center">设置器</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>panel.background</code></td>
+<td align="center"><code>element_rect()</code></td>
+<td align="center">面板背景（在数据下）</td>
+</tr>
+<tr class="even">
+<td align="center"><code>panel.border</code></td>
+<td align="center"><code>element_rect()</code></td>
+<td align="center">面板边框(在数据上方)</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>panel.grid.major</code></td>
+<td align="center"><code>element_line()</code></td>
+<td align="center">主要网格线</td>
+</tr>
+<tr class="even">
+<td align="center"><code>panel.grid.major.x</code></td>
+<td align="center"><code>element_line()</code></td>
+<td align="center">垂直主要网格线</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>panel.grid.major.y</code></td>
+<td align="center"><code>element_line()</code></td>
+<td align="center">水平的主要网格线</td>
+</tr>
+<tr class="even">
+<td align="center"><code>panel.grid.minor</code></td>
+<td align="center"><code>element_line()</code></td>
+<td align="center">次要网格线</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>panel.grid.minor.x</code></td>
+<td align="center"><code>element_line()</code></td>
+<td align="center">垂直的次要网格线</td>
+</tr>
+<tr class="even">
+<td align="center"><code>panel.grid.minor.y</code></td>
+<td align="center"><code>element_line()</code></td>
+<td align="center">水平的次要网格线</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>aspect.ratio</code></td>
+<td align="center"><code>numberic</code></td>
+<td align="center">绘图长宽比</td>
+</tr>
+</tbody>
+</table>
+<p><code>panel.background</code>和<code>panel.border</code>的主要区别是，背景是在数据下面绘制的，而边框是在数据上面绘制的。由于这个原因，在覆盖<code>panel.border</code>时，你总是需要指定<code>fill = NA</code>。</p>
+</div>
+<div id="分面元素" class="section level3 hasAnchor" number="5.4.5">
+<h3><span class="header-section-number">5.4.5</span> 分面元素<a href="theme-systems.html#分面元素" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>以下主题元素与分面ggplots相关:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">元素</th>
+<th align="center">设置器</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>strip.background</code></td>
+<td align="center"><code>element_rect()</code></td>
+<td align="center">面板条的背景</td>
+</tr>
+<tr class="even">
+<td align="center"><code>strip.text</code></td>
+<td align="center"><code>element_text()</code></td>
+<td align="center">条状文本</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>strip.text.x</code></td>
+<td align="center"><code>element_text()</code></td>
+<td align="center">水平条状文本</td>
+</tr>
+<tr class="even">
+<td align="center"><code>strip.text.y</code></td>
+<td align="center"><code>element_text()</code></td>
+<td align="center">垂直条状文本</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>panel.margin</code></td>
+<td align="center"><code>unit()</code></td>
+<td align="center">切面之间的边距</td>
+</tr>
+<tr class="even">
+<td align="center"><code>panel.margin.x</code></td>
+<td align="center"><code>unit()</code></td>
+<td align="center">切面之间的空白(垂直)</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>panel.margin.y</code></td>
+<td align="center"><code>unit()</code></td>
+<td align="center">切面之间的边距（水平）</td>
+</tr>
+</tbody>
+</table>
+<p><code>strip.text.x</code>元素同时影响到<code>facet_wrap()</code>或<code>facet_grid()</code>; <code>strip.text.y</code>元素只影响到<code>facet_grid()</code>。</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="coordinate-systems.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tidyverse简介.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/Coordinate-and-theme.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

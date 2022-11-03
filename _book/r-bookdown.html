@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 7 章 R bookdown | 麻麻说我们可以用 R Markdown 写书了</title>
+  <meta name="description" content="一个简单的中文书示例。" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 7 章 R bookdown | 麻麻说我们可以用 R Markdown 写书了" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="一个简单的中文书示例。" />
+  <meta name="github-repo" content="yihui/bookdown-chinese" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 7 章 R bookdown | 麻麻说我们可以用 R Markdown 写书了" />
+  
+  <meta name="twitter:description" content="一个简单的中文书示例。" />
+  
+
+<meta name="author" content="张三" />
+
+
+<meta name="date" content="2022-11-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="r-shiny.html"/>
+<link rel="next" href="r-blogdown博客.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 牛刀小试</a></li>
+<li class="chapter" data-level="2" data-path="wind.html"><a href="wind.html"><i class="fa fa-check"></i><b>2</b> 白苹风末</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="wind.html"><a href="wind.html#张老爷子"><i class="fa fa-check"></i><b>2.1</b> 张老爷子</a></li>
+<li class="chapter" data-level="2.2" data-path="wind.html"><a href="wind.html#彭大将领"><i class="fa fa-check"></i><b>2.2</b> 彭大将领</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html#author"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="chapter" data-level="3" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html"><i class="fa fa-check"></i><b>3</b> ggplot2语法结构——七层结构</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#第一层数据data"><i class="fa fa-check"></i><b>3.1</b> 第一层：数据（Data）</a></li>
+<li class="chapter" data-level="3.2" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#第二层视觉映射aesthetics"><i class="fa fa-check"></i><b>3.2</b> 第二层：视觉映射（Aesthetics）</a></li>
+<li class="chapter" data-level="3.3" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#第三层几何对象geometries"><i class="fa fa-check"></i><b>3.3</b> 第三层：几何对象（Geometries）</a></li>
+<li class="chapter" data-level="3.4" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#coordinate-systems"><i class="fa fa-check"></i><b>3.4</b> Coordinate systems</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#线性坐标系统"><i class="fa fa-check"></i><b>3.4.1</b> 线性坐标系统</a></li>
+<li class="chapter" data-level="3.4.2" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#非线性坐标系统"><i class="fa fa-check"></i><b>3.4.2</b> 非线性坐标系统</a></li>
+<li class="chapter" data-level="3.4.3" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#scale"><i class="fa fa-check"></i><b>3.4.3</b> Scale</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#theme-systems"><i class="fa fa-check"></i><b>3.5</b> Theme systems</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#简介"><i class="fa fa-check"></i><b>3.5.1</b> 简介</a></li>
+<li class="chapter" data-level="3.5.2" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#完整的主题"><i class="fa fa-check"></i><b>3.5.2</b> 完整的主题</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#修改主题组件"><i class="fa fa-check"></i><b>3.6</b> 修改主题组件</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#主题元素"><i class="fa fa-check"></i><b>3.6.1</b> 主题元素</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="r语言简介.html"><a href="r语言简介.html"><i class="fa fa-check"></i><b>4</b> R语言简介</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="r语言简介.html"><a href="r语言简介.html#数据可视化和探索"><i class="fa fa-check"></i><b>4.1</b> 数据可视化和探索</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="r语言简介.html"><a href="r语言简介.html#ggplot2"><i class="fa fa-check"></i><b>4.1.1</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="r语言简介.html"><a href="r语言简介.html#数据处理和转换"><i class="fa fa-check"></i><b>4.2</b> 数据处理和转换</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="r语言简介.html"><a href="r语言简介.html#dplyr"><i class="fa fa-check"></i><b>4.2.1</b> dplyr</a></li>
+<li class="chapter" data-level="4.2.2" data-path="r语言简介.html"><a href="r语言简介.html#tidyr"><i class="fa fa-check"></i><b>4.2.2</b> tidyr</a></li>
+<li class="chapter" data-level="4.2.3" data-path="r语言简介.html"><a href="r语言简介.html#stringr"><i class="fa fa-check"></i><b>4.2.3</b> stringr</a></li>
+<li class="chapter" data-level="4.2.4" data-path="r语言简介.html"><a href="r语言简介.html#forcats"><i class="fa fa-check"></i><b>4.2.4</b> forcats</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="r语言简介.html"><a href="r语言简介.html#数据导入和管理"><i class="fa fa-check"></i><b>4.3</b> 数据导入和管理</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="r语言简介.html"><a href="r语言简介.html#tibble"><i class="fa fa-check"></i><b>4.3.1</b> tibble</a></li>
+<li class="chapter" data-level="4.3.2" data-path="r语言简介.html"><a href="r语言简介.html#readr"><i class="fa fa-check"></i><b>4.3.2</b> readr</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="r语言简介.html"><a href="r语言简介.html#功能性编程"><i class="fa fa-check"></i><b>4.4</b> 功能性编程</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="r语言简介.html"><a href="r语言简介.html#purrr"><i class="fa fa-check"></i><b>4.4.1</b> purrr</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="tidyverse简介.html"><a href="tidyverse简介.html"><i class="fa fa-check"></i><b>5</b> Tidyverse简介</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据可视化和探索-1"><i class="fa fa-check"></i><b>5.1</b> 数据可视化和探索</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#ggplot2-1"><i class="fa fa-check"></i><b>5.1.1</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据处理和转换-1"><i class="fa fa-check"></i><b>5.2</b> 数据处理和转换</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#dplyr-1"><i class="fa fa-check"></i><b>5.2.1</b> dplyr</a></li>
+<li class="chapter" data-level="5.2.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#tidyr-1"><i class="fa fa-check"></i><b>5.2.2</b> tidyr</a></li>
+<li class="chapter" data-level="5.2.3" data-path="tidyverse简介.html"><a href="tidyverse简介.html#stringr-1"><i class="fa fa-check"></i><b>5.2.3</b> stringr</a></li>
+<li class="chapter" data-level="5.2.4" data-path="tidyverse简介.html"><a href="tidyverse简介.html#forcats-1"><i class="fa fa-check"></i><b>5.2.4</b> forcats</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据导入和管理-1"><i class="fa fa-check"></i><b>5.3</b> 数据导入和管理</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#tibble-1"><i class="fa fa-check"></i><b>5.3.1</b> tibble</a></li>
+<li class="chapter" data-level="5.3.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#readr-1"><i class="fa fa-check"></i><b>5.3.2</b> readr</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="tidyverse简介.html"><a href="tidyverse简介.html#功能性编程-1"><i class="fa fa-check"></i><b>5.4</b> 功能性编程</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#purrr-1"><i class="fa fa-check"></i><b>5.4.1</b> purrr</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="tidyverse简介.html"><a href="tidyverse简介.html#介绍"><i class="fa fa-check"></i><b>5.5</b> 介绍</a></li>
+<li class="chapter" data-level="5.6" data-path="tidyverse简介.html"><a href="tidyverse简介.html#章节结构"><i class="fa fa-check"></i><b>5.6</b> 章节结构</a></li>
+<li class="chapter" data-level="5.7" data-path="tidyverse简介.html"><a href="tidyverse简介.html#相关分析"><i class="fa fa-check"></i><b>5.7</b> 相关分析</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#概念"><i class="fa fa-check"></i><b>5.7.1</b> 概念</a></li>
+<li class="chapter" data-level="5.7.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#相关系数及其计算"><i class="fa fa-check"></i><b>5.7.2</b> 相关系数及其计算</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="tidyverse简介.html"><a href="tidyverse简介.html#一元与多元回归"><i class="fa fa-check"></i><b>5.8</b> 一元与多元回归</a></li>
+<li class="chapter" data-level="5.9" data-path="tidyverse简介.html"><a href="tidyverse简介.html#普通最小二乘法回归"><i class="fa fa-check"></i><b>5.9</b> 普通最小二乘法回归</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#多元回归分析"><i class="fa fa-check"></i><b>5.9.1</b> 多元回归分析</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="tidyverse简介.html"><a href="tidyverse简介.html#logistic回归"><i class="fa fa-check"></i><b>5.10</b> Logistic回归</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#分组数据的logistics回归模型"><i class="fa fa-check"></i><b>5.10.1</b> 分组数据的Logistics回归模型</a></li>
+<li class="chapter" data-level="5.10.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#未分组数据的logistics回归模型"><i class="fa fa-check"></i><b>5.10.2</b> 未分组数据的Logistics回归模型</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="r-shiny.html"><a href="r-shiny.html"><i class="fa fa-check"></i><b>6</b> R shiny</a></li>
+<li class="chapter" data-level="7" data-path="r-bookdown.html"><a href="r-bookdown.html"><i class="fa fa-check"></i><b>7</b> R bookdown</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="r-bookdown.html"><a href="r-bookdown.html#介绍-1"><i class="fa fa-check"></i><b>7.1</b> 介绍</a></li>
+<li class="chapter" data-level="7.2" data-path="r-bookdown.html"><a href="r-bookdown.html#章节结构-1"><i class="fa fa-check"></i><b>7.2</b> 章节结构</a></li>
+<li class="chapter" data-level="7.3" data-path="r-bookdown.html"><a href="r-bookdown.html#书的编译"><i class="fa fa-check"></i><b>7.3</b> 书的编译</a></li>
+<li class="chapter" data-level="7.4" data-path="r-bookdown.html"><a href="r-bookdown.html#交叉引用"><i class="fa fa-check"></i><b>7.4</b> 交叉引用</a></li>
+<li class="chapter" data-level="7.5" data-path="r-bookdown.html"><a href="r-bookdown.html#数学公式和公式编号"><i class="fa fa-check"></i><b>7.5</b> 数学公式和公式编号</a></li>
+<li class="chapter" data-level="7.6" data-path="r-bookdown.html"><a href="r-bookdown.html#定理类编号"><i class="fa fa-check"></i><b>7.6</b> 定理类编号</a></li>
+<li class="chapter" data-level="7.7" data-path="r-bookdown.html"><a href="r-bookdown.html#文献引用"><i class="fa fa-check"></i><b>7.7</b> 文献引用</a></li>
+<li class="chapter" data-level="7.8" data-path="r-bookdown.html"><a href="r-bookdown.html#插图"><i class="fa fa-check"></i><b>7.8</b> 插图</a></li>
+<li class="chapter" data-level="7.9" data-path="r-bookdown.html"><a href="r-bookdown.html#markdown表格"><i class="fa fa-check"></i><b>7.9</b> Markdown表格</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="r-blogdown博客.html"><a href="r-blogdown博客.html"><i class="fa fa-check"></i><b>8</b> R blogdown（博客）</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="r-blogdown博客.html"><a href="r-blogdown博客.html#r-blogdown-简介和安装"><i class="fa fa-check"></i><b>8.1</b> R blogdown 简介和安装</a></li>
+<li class="chapter" data-level="8.2" data-path="r-blogdown博客.html"><a href="r-blogdown博客.html#安装"><i class="fa fa-check"></i><b>8.2</b> 安装</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="r-blogdown博客.html"><a href="r-blogdown博客.html#blogdown"><i class="fa fa-check"></i><b>8.2.1</b> blogdown</a></li>
+<li class="chapter" data-level="8.2.2" data-path="r-blogdown博客.html"><a href="r-blogdown博客.html#hugo-框架"><i class="fa fa-check"></i><b>8.2.2</b> Hugo 框架</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="r-blogdown博客.html"><a href="r-blogdown博客.html#用-r-blogdown-搭建个人博客"><i class="fa fa-check"></i><b>8.3</b> 用 R blogdown 搭建个人博客</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="r-blogdown博客.html"><a href="r-blogdown博客.html#创建示例网站"><i class="fa fa-check"></i><b>8.3.1</b> 创建示例网站</a></li>
+<li class="chapter" data-level="8.3.2" data-path="r-blogdown博客.html"><a href="r-blogdown博客.html#发布网站"><i class="fa fa-check"></i><b>8.3.2</b> 发布网站</a></li>
+<li class="chapter" data-level="8.3.3" data-path="r-blogdown博客.html"><a href="r-blogdown博客.html#网站更新"><i class="fa fa-check"></i><b>8.3.3</b> 网站更新</a></li>
+<li class="chapter" data-level="8.3.4" data-path="r-blogdown博客.html"><a href="r-blogdown博客.html#发布新帖子"><i class="fa fa-check"></i><b>8.3.4</b> 发布新帖子</a></li>
+<li class="chapter" data-level="8.3.5" data-path="r-blogdown博客.html"><a href="r-blogdown博客.html#自动同步"><i class="fa fa-check"></i><b>8.3.5</b> 自动同步</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="玫瑰图.html"><a href="玫瑰图.html"><i class="fa fa-check"></i><b>9</b> 玫瑰图</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">麻麻说我们可以用 R Markdown 写书了</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-bookdown" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">第 7 章</span> R bookdown<a href="r-bookdown.html#r-bookdown" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="介绍-1" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> 介绍<a href="r-bookdown.html#介绍-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R的bookdown扩展包(<a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>) 是继knitr和rmarkdown扩展包之后， 另一个增强markdown格式的扩展， 使得Rmd格式可以支持公式、定理、图表自动编号和引用、链接， 文献引用和链接等适用于编写书籍的功能。 在bookdown的管理下一本书的内容可以分解成多个Rmd文件， 其中可以有可执行的R代码， R代码生成的文字结果、表格、图形可以自动插入到生成的内容中， 表格和图形可以是浮动排版的。 输出格式主要支持gitbook格式的网页图书， 这种图书在左侧显示目录， 右侧显示内容， 并可以自动链接到上一章和下一章； 通过单独安装的LaTeX编译器支持将书籍转换为一个PDF文件， 支持中文； 可以生成ePub等格式的电子书。</p>
+<p>主要用于编写有多个章节的书籍， 也可以用来生成单一文件的研究报告。</p>
+<p>建议使用RStudio集成环境制作这样的图书， 该软件内建了一键编译整本书的功能。 需要安装bookdown扩展包的最新版本。 bookdown扩展包现在还比较新， 还有一些BUG， 所以尽可能使用最新版的bookdown扩展包并且及时更新RStudio软件。 查看编译的网站建议使用Google Chrome浏览器， 此浏览器对gitbook的支持较好。</p>
+<p>为了新写一本书或者从已有的书转换， 最简单的做法是从bookdown的网站下载bookdown配套的例书的zip文件 (见<a href="https://github.com/rstudio/bookdown-demo" class="uri">https://github.com/rstudio/bookdown-demo</a>)， 将其解压到本地硬盘某个子目录， 然后修改其中的内容适应自己的书的需要。</p>
+<p>因为中文需要一些特殊的设置， 以及在网络条件不好的条件下支持数学公式显示， 本书作者提供了一个粗浅的中文书bookdown模板， 下载链接为:</p>
+<p><code>bookdown-template-v0-6.zip</code></p>
+<p>其中的CBook子目录包含了所需的中文书模板， CArticle子目录包含了论文格式模板， 其它子目录有一些别的模板， 为了在本地支持网页中的数学公式显示还有一个MathJax目录。 参见其中的readme.txt说明文件。</p>
+</div>
+<div id="章节结构-1" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> 章节结构<a href="r-bookdown.html#章节结构-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>除了<code>index.Rmd</code>文件, 项目中每个<code>.Rmd</code>文件都作为一章。 每个<code>.Rmd</code>文件第一行， 应该是以一个井号和空格开头的一级标题, 后面再加空格然后有大括号内以井号开头的章标签，
+这些章标签去掉井号后会作为生成的HTML文件的名字， 所以一定要有章标签， 而且章节标签在全书中都不要重复以免冲突。 文件内可以用两个井号和一个空格开始的行表示节标题， 最后也应该有大括号内以井号开头的节标签,
+使用bookdown写书， 一般每章不要太长， 否则编译预览很慢， 读者浏览网页格式也慢。
+内容相近的章节可以作为一个“部分”。 为此， 在一个部分的第一个章节文件的章标题前面增加一行， 以 <code># (PART)</code>开头， 以<code>{-}</code>结尾， 中间是部分的名称，书的最后可以有附录， 附录的章节将显示为A.1, B.1这样的格式。</p>
+</div>
+<div id="书的编译" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> 书的编译<a href="r-bookdown.html#书的编译" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>建议使用RStudio软件编辑内容， 管理和编译整本书。</p>
+<p>在<code>index.Rmd</code>或者<code>_bookdown.yml</code>中设置<code>site: bookdown::bookdown_site</code>后， RStudio就能识别这个项目是一个bookdown项目， 这时RStudio会有一个Build窗格，其中有“Build book”快捷图标， 从下拉菜单中选择一个输出格式（包括gitbook、pdf_book、epub_book）， 就可以编译整本书。 对gitbook格式， 即HTML网页格式， 编译完成后会弹出一个预览窗口， 其中的“Open in Browser”按钮可以将内容在操作系统默认的网络浏览器中打开。</p>
+<p>将书编译为PDF需要利用LaTeX编译器， 这需要单独安装LaTeX编译软件， LaTeX编译器对输入要求十分严格， 一丁点儿错误都会造成整本书的编译失败， 所以对于不熟悉LaTeX的用户， 不建议使用bookdown的pdf_book输出格式。 当前的R Markdown仅支持谢益辉的TinyTeX软件， 安装和管理参见22.12.1。</p>
+<p>对于较短的书， 做了一定修改后都可以重新编译gitbook结果和pdf_book结果。 在书比较长了以后， 每次编译都花费很长时间， 所以可以仅编译gitbook格式的一章， 修改满意后再编译整本书。 仅编译一章也需要所有的.Rmd文件都是已经编译过一遍的， 新增的Rmd文件会使得编译单章出错， 每次新增了Rmd文件都应该重新编译整本书， 但是内容修改后不必要重新编译整本书， 可以仅编译单章。</p>
+<p>编译完成后在结果目录（默认是<code>_book</code>）中找到相应的HTML文件打开查看， 再次编译后仅需在浏览器中重新载入文件。 建议使用Google chrome浏览器， 用MS IE或者Edge浏览器对gitbook的Javascrpt支持不够好， 使得目录的层级管理、自动滚动、单章编译后的目录更新不正常， 而chrome则没有问题。</p>
+<p>编译单章也不能解决所有的问题， 有些问题还是需要编译整本书， 而章节很多时整本书编译又太慢。 为此， 可以在项目中增加一个临时的部分内容子目录， 如testing子目录， 在子目录中存放相同的设置文件<code>index.Rmd</code>、<code>_bookdown.yml</code>、<code>_output.yml</code>， 以及图形文件、文献数据库文件， 并将要检查的若干章节复制到testing子目录中， 在testing中新建一个bookdown项目， 然后编译其中的整本书。 这在调试部分章节的HTML和PDF输出时很有效。 解决问题后只要将修改过的章节复制回原始的书的目录中。</p>
+<p>有时仅仅想验证某个长数学公式或者表格， 用上述的编译单章或者单独一个小规模测试项目的办法也不经济。 这时，单独开一个备用的普通RStudio项目， 不能是bookdown项目， 在其中的Rmd文件中验证数学公式和表格的编排， 这样最为方便。</p>
+<p>有时需要根据编译输出目标采用不同的设置， 比如， 输出为html时可以使用HTML插件(widgets)， 而输出到PDF则不可以。 可以用 <code>knitr::opts_knit$get("rmarkdown.pandoc.to")</code> 感知当前编译过程的目标， 对HTML类，输出为”html”， 对PDF，输出为”latex”。</p>
+</div>
+<div id="交叉引用" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> 交叉引用<a href="r-bookdown.html#交叉引用" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>在写作时，每个一级到三级标题都应该有自定义的标签， 格式是在标题行末尾空格后添加<code>{#label}</code>， 其中label是自己指定的标签， 使用英文、数字、减号， 不要使用中文， 而且整本书不要有重复的标签。 为避免不同章节使用了重复标签， 可以取label的前一部分为所在章节的文件名。</p>
+<p>如果要引用某一章节， 有如下的做法：</p>
+<p><code>§\@ref(label)</code></p>
+<p>label是某个标题对应的标签。 结果显示为如§3.1.1这样的章节号，并可点击， 点击时跳跃到相应的章节。
+<code>[链接文本](#label)</code> 其中label是某个标题对应的标签。 结果产生一个链接，显示为链接文本，点击时跳到label对应的章节。
+有时需要在数学公式内部、图形的说明中引用定理编号、公式编号等， 这需要预先定义单独的文字性引用， 然后再使用该文字引用。 定义文字引用如：</p>
+<p><code>(ref:mytextlabel)</code> <code>见定理\@ref(thm:orth)</code></p>
+<p>可以在数学公式内部、图形说明的字符串内用<code>(ref:mytextlabel)</code>的格式调用上面定义的文字引用。 目前在数学公式内部使用有BUG。</p>
+</div>
+<div id="数学公式和公式编号" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> 数学公式和公式编号<a href="r-bookdown.html#数学公式和公式编号" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>通过R的knitr和rmarkdown扩展包以及pandoc软件， .Rmd格式文件已经支持数学公式， 见R Markdown说明。</p>
+<p>在用<code>$$</code>符号在两端界定的公式后面， 可以用<code>\tag{标号}</code>命令增加人为的公式编号，如</p>
+<p><span class="math display">\[
+y = f(x)
+\tag{*}
+\]</span>
+结果显示为</p>
+<p>要注意的是， 在<code>$$</code>界定的数学公式内用了aligned环境后， 仅能在<code>\end{aligned}</code>之后加<code>\tag{标号}</code>命令， 而不能写在aligned环境内。 这样， 多行的公式将不能为每行编号。</p>
+<p>用<code>\tag</code>命令人为编号比较简单易用， 但是在有大量公式需要编号时就很不方便， 只要增加了一个公式就需要人为地重新编号并修改相应的引用。 bookdown包支持对公式自动编号， 并可以按公式标签引用公式， 引用带有超链接。</p>
+<p>bookdown的自动编号对LaTeX的equation环境、align环境都可以使用， 而且不需要在两端用<code>$$</code>界定。 在公式的末尾或者一行公式的\换行符之前， 写<span class="math inline">\((\#eq:mylabel)\)</span>， 其中mylabel是自己给公式的文字标签， 文字标签可以使用英文字母、数字、减号、下划线。 如
+<span class="math display" id="eq:efunc-ex" id="eq:efunc-sum">\[
+\begin{align}
+f(x) =&amp; \sum_{k=0}^\infty \frac{1}{k!} x^k \tag{7.1} \\
+  = e^x \tag{7.2}
+\end{align}
+\]</span></p>
+<p>将会对两行公式自动编号。 引用公式时， 用如<span class="math inline">\(\@ref(eq:mylabel)\)</span>，其中mylabel是公式的自定义标签， 编译后这样的引用会变成带有链接的圆括号内的编号。</p>
+<p>公式编号在全书中都不要有冲突（不同的公式定义了相同的编号）。 一种办法是，自定义的公式标签的开头以章节文件名开头。</p>
+</div>
+<div id="定理类编号" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> 定理类编号<a href="r-bookdown.html#定理类编号" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>定理、引理、命题、例题等， 使用特殊的markdown代码格式， 以三个冒号开头， 以三个冒号结尾， 在开头的三个反单撇号后面空格后写<code>{.theorem}</code>表示定理。 在<code>.theorem</code>后面， 可以用空格分隔后写一个定理的自定义标签， 标签以#开头，由字母、数字、减号组成， #号作为标签的开头标志但不作为标签的一部分。 可以用name=“定理名称”指定一个显示的定理名。</p>
+<p>设某个定理的自定义标签是<code>#mythlabel</code>， 则可以用如<code>\@ref(thm:mythlabel)</code>引用此定理的编号， 编号是在每一章内从头编号的。 编号有自动生成的链接。</p>
+<p>例如：</p>
+<div class="theorem">
+<p><span id="thm:norlim-weakconv" class="theorem"><strong>Theorem 7.1  (弱收敛) </strong></span><span class="math inline">\(\xi_n\)</span>依分布收敛到<span class="math inline">\(\xi\)</span>，
+当且仅当对任意<span class="math inline">\(\mathbb R\)</span>上的一元实值连续函数<span class="math inline">\(f(\cdot)\)</span>都有
+<span class="math display">\[
+  E f(\xi_n) \to E f(\xi), \ n \to \infty .
+\]</span></p>
+</div>
+<p>当定理或例子内有列表时， 一定注意列表前后要空行， 否则会导致嵌套错误。 这种错误在编译HTML时无法发现， 但是会造成结果莫名其妙地出错。</p>
+<p>bookdown提供了证明环境， 但是不太实用。</p>
+<p>对例题， 将theorem替换成example， 在引用时将thm替换成exm。 如：</p>
+<div class="example">
+<p><span id="exm:noralim-aspr-ce" class="example"><strong>Example 7.1  (依概率收敛不a.s.收敛反例) </strong></span>a.s.收敛推出依概率收敛，
+但是反之不然。给出反例。</p>
+</div>
+<p>定理类的段落包括如下的种类：</p>
+<p>表: 定理类段落</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">环境名</th>
+<th align="center">默认显示名</th>
+<th align="center">标签前缀</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">theorem</td>
+<td align="center">Theorem</td>
+<td align="center">thm</td>
+</tr>
+<tr class="even">
+<td align="center">lemma</td>
+<td align="center">Lemma</td>
+<td align="center">lem</td>
+</tr>
+<tr class="odd">
+<td align="center">corollary</td>
+<td align="center">Corollary</td>
+<td align="center">cor</td>
+</tr>
+<tr class="even">
+<td align="center">proposition</td>
+<td align="center">Proposition</td>
+<td align="center">prp</td>
+</tr>
+<tr class="odd">
+<td align="center">conjecture</td>
+<td align="center">Conjecture</td>
+<td align="center">cnj</td>
+</tr>
+<tr class="even">
+<td align="center">definition</td>
+<td align="center">Definition</td>
+<td align="center">def</td>
+</tr>
+<tr class="odd">
+<td align="center">example</td>
+<td align="center">Example</td>
+<td align="center">exm</td>
+</tr>
+<tr class="even">
+<td align="center">exercise</td>
+<td align="center">Exercise</td>
+<td align="center">exr</td>
+</tr>
+</tbody>
+</table>
+<p>其中的显示名可以在<code>_bookdown.yml</code>的language的label属性中修改.</p>
+</div>
+<div id="文献引用" class="section level2 hasAnchor" number="7.7">
+<h2><span class="header-section-number">7.7</span> 文献引用<a href="r-bookdown.html#文献引用" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>bookdown使用.bib格式的文献数据库， 关于.bib格式的文献数据库请参考LaTeX的有关说明。 在<code>index.Rmd</code>的YAML元数据部分或者<code>_bookdown.yml</code>中用bibliography可以设置使用的一个或者多个.bib格式的文献数据库文件。 设某篇文章的.bib索引键是<code>Qin2007:comp</code>， 用 <code>@Qin2007:comp</code>可以引用此文献， 用<code>[@Qin2007:comp]</code> 可以生成带有括号的引用， 引用都有超链接。</p>
+<p>指定.bib文件时可以用相对路径， 如<code>“../docs/mybib.bib”</code>。</p>
+</div>
+<div id="插图" class="section level2 hasAnchor" number="7.8">
+<h2><span class="header-section-number">7.8</span> 插图<a href="r-bookdown.html#插图" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>bookdown图书的插图有两种， 一种是已经保存为图形文件的， 主要是png、jpg和pdf图片； 另一种是文中的R代码生成的图形。</p>
+<p>已经有图形文件的， 可以用markdown格式原来的插图方法， 见markdown格式介绍。 但是，这样做不能给图形自动编号， 另外因为制作图书是有网页和PDF书两种主要输出格式的， 原有的插图方式在这两种输出格式上有细微的不一致。 所以，最好是统一使用Rmd的插图方法。</p>
+<p>Rmd的插图方法就是写一段R代码段来插图， 如果是用程序作图，则代码中写作图的代码； 如果是已有的图形文件， 可以在一个单独的R代码段中用类似下面的命令插图：</p>
+<p><code>knitr::include_graphics("figs/myfig01.png")</code></p>
+<p>其中figs是存放图形文件的子目录名， myfig01.png是要插入的图形文件名。 这样， 如果同时还有myfig01.pdf的话， 则HTML输出使用png图片而PDF输出自动选用pdf文件。 另外， 插图的选项在代码段的选项中规定： 用代码段的<code>fig.with</code>和<code>fig.height</code>选项指定作图的宽和高（英寸）， 用<code>out.width</code>和<code>out.height</code>选项指定在输出中实际显示的宽和高， 实际显示的宽和高如果使用如”90%“这样的百分数单位则可以自动适应输出的大小。</p>
+<p>为了使得插图可以自动编号并可以被引用， 为代码段指定标签并增加一个<code>fig.cap="..."</code>选项指定图形标题。 代码段的标签变成浮动图形的标签，如myfiglabel， 则为了引用这个图只要用<code>\@ref(fig:myfiglabel)</code>。 注意，在整本书中这些标签都不能重复， 否则编译LaTeX支持的PDF输出会失败。</p>
+<p>有些插图会伴随很长的说明文字， 这可以用代码段的<code>fig.cap=</code>选项指定， 但是其中的Markdown特有的格式在转换LaTeX时不一定支持， 而且在代码段选项中写太长的文字说明也是的程序难以辨认。 所以， 可以使用文字引用的方式： 在单独的一段中， 用如下格式定义一段可引用的文字内容：</p>
+<p><code>(ref:mylabel)</code> 这里用实际的文字内容代替，不允许换行，不能分段。</p>
+<p>其中mylabel是自己定义的仅由英文大小写字母、数字和减号组成的引用标志符。在需要使用这段文字的位置，用<code>(ref:mylabel)</code>这种格式引用。 注意定义和引用都是用的<code>(ref:mylabel)</code>语法。</p>
+<p>用R生成PDF格式的图形时， 需要指定中文作为family选项， 所以在每个源文件的开头应该加上如下的设置， 使得生成PDF图时中文能够正确显示：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="r-bookdown.html#cb3-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pdf.options</span>(<span class="at">family=</span><span class="st">&quot;GB1&quot;</span>)</span></code></pre></div>
+</div>
+<div id="markdown表格" class="section level2 hasAnchor" number="7.9">
+<h2><span class="header-section-number">7.9</span> Markdown表格<a href="r-bookdown.html#markdown表格" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>bookdown书的表格可以用markdown格式的表格， 最好仅使用管道表， 管道表对中文内容支持最好。 为了对这样的表格自动编号， 需要在表格的前面或者后面空开一行的位置， 写</p>
+<p><code>Table: (\#tab:mylabel) 表的说明</code></p>
+<p>其中mylabel是自定义的表格标签。 在引用这个表时用如 <code>\@ref(tab:mylabel)</code></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r-shiny.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-blogdown博客.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/数据交流.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

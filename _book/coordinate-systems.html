@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 4 章 Coordinate systems | 麻麻说我们可以用 R Markdown 写书了</title>
+  <meta name="description" content="一个简单的中文书示例。" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 4 章 Coordinate systems | 麻麻说我们可以用 R Markdown 写书了" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="一个简单的中文书示例。" />
+  <meta name="github-repo" content="yihui/bookdown-chinese" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 4 章 Coordinate systems | 麻麻说我们可以用 R Markdown 写书了" />
+  
+  <meta name="twitter:description" content="一个简单的中文书示例。" />
+  
+
+<meta name="author" content="张三" />
+
+
+<meta name="date" content="2022-10-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="r语言简介.html"/>
+<link rel="next" href="theme-systems.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 牛刀小试</a></li>
+<li class="chapter" data-level="2" data-path="wind.html"><a href="wind.html"><i class="fa fa-check"></i><b>2</b> 白苹风末</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="wind.html"><a href="wind.html#张老爷子"><i class="fa fa-check"></i><b>2.1</b> 张老爷子</a></li>
+<li class="chapter" data-level="2.2" data-path="wind.html"><a href="wind.html#彭大将领"><i class="fa fa-check"></i><b>2.2</b> 彭大将领</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html#author"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="chapter" data-level="3" data-path="r语言简介.html"><a href="r语言简介.html"><i class="fa fa-check"></i><b>3</b> R语言简介</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="r语言简介.html"><a href="r语言简介.html#r-blogdown-简介和安装"><i class="fa fa-check"></i><b>3.1</b> R blogdown 简介和安装</a></li>
+<li class="chapter" data-level="3.2" data-path="r语言简介.html"><a href="r语言简介.html#安装"><i class="fa fa-check"></i><b>3.2</b> 安装</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="r语言简介.html"><a href="r语言简介.html#blogdown"><i class="fa fa-check"></i><b>3.2.1</b> blogdown</a></li>
+<li class="chapter" data-level="3.2.2" data-path="r语言简介.html"><a href="r语言简介.html#hugo-框架"><i class="fa fa-check"></i><b>3.2.2</b> Hugo 框架</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="r语言简介.html"><a href="r语言简介.html#用-r-blogdown-搭建个人博客"><i class="fa fa-check"></i><b>3.3</b> 用 R blogdown 搭建个人博客</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="r语言简介.html"><a href="r语言简介.html#创建示例网站"><i class="fa fa-check"></i><b>3.3.1</b> 创建示例网站</a></li>
+<li class="chapter" data-level="3.3.2" data-path="r语言简介.html"><a href="r语言简介.html#发布网站"><i class="fa fa-check"></i><b>3.3.2</b> 发布网站</a></li>
+<li class="chapter" data-level="3.3.3" data-path="r语言简介.html"><a href="r语言简介.html#网站更新"><i class="fa fa-check"></i><b>3.3.3</b> 网站更新</a></li>
+<li class="chapter" data-level="3.3.4" data-path="r语言简介.html"><a href="r语言简介.html#发布新帖子"><i class="fa fa-check"></i><b>3.3.4</b> 发布新帖子</a></li>
+<li class="chapter" data-level="3.3.5" data-path="r语言简介.html"><a href="r语言简介.html#自动同步"><i class="fa fa-check"></i><b>3.3.5</b> 自动同步</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="r语言简介.html"><a href="r语言简介.html#数据可视化和探索"><i class="fa fa-check"></i><b>3.4</b> 数据可视化和探索</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="r语言简介.html"><a href="r语言简介.html#ggplot2"><i class="fa fa-check"></i><b>3.4.1</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="r语言简介.html"><a href="r语言简介.html#数据处理和转换"><i class="fa fa-check"></i><b>3.5</b> 数据处理和转换</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="r语言简介.html"><a href="r语言简介.html#dplyr"><i class="fa fa-check"></i><b>3.5.1</b> dplyr</a></li>
+<li class="chapter" data-level="3.5.2" data-path="r语言简介.html"><a href="r语言简介.html#tidyr"><i class="fa fa-check"></i><b>3.5.2</b> tidyr</a></li>
+<li class="chapter" data-level="3.5.3" data-path="r语言简介.html"><a href="r语言简介.html#stringr"><i class="fa fa-check"></i><b>3.5.3</b> stringr</a></li>
+<li class="chapter" data-level="3.5.4" data-path="r语言简介.html"><a href="r语言简介.html#forcats"><i class="fa fa-check"></i><b>3.5.4</b> forcats</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="r语言简介.html"><a href="r语言简介.html#数据导入和管理"><i class="fa fa-check"></i><b>3.6</b> 数据导入和管理</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="r语言简介.html"><a href="r语言简介.html#tibble"><i class="fa fa-check"></i><b>3.6.1</b> tibble</a></li>
+<li class="chapter" data-level="3.6.2" data-path="r语言简介.html"><a href="r语言简介.html#readr"><i class="fa fa-check"></i><b>3.6.2</b> readr</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="r语言简介.html"><a href="r语言简介.html#功能性编程"><i class="fa fa-check"></i><b>3.7</b> 功能性编程</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="r语言简介.html"><a href="r语言简介.html#purrr"><i class="fa fa-check"></i><b>3.7.1</b> purrr</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="r语言简介.html"><a href="r语言简介.html#介绍"><i class="fa fa-check"></i><b>3.8</b> 介绍</a></li>
+<li class="chapter" data-level="3.9" data-path="r语言简介.html"><a href="r语言简介.html#章节结构"><i class="fa fa-check"></i><b>3.9</b> 章节结构</a></li>
+<li class="chapter" data-level="3.10" data-path="r语言简介.html"><a href="r语言简介.html#书的编译"><i class="fa fa-check"></i><b>3.10</b> 书的编译</a></li>
+<li class="chapter" data-level="3.11" data-path="r语言简介.html"><a href="r语言简介.html#交叉引用"><i class="fa fa-check"></i><b>3.11</b> 交叉引用</a></li>
+<li class="chapter" data-level="3.12" data-path="r语言简介.html"><a href="r语言简介.html#数学公式和公式编号"><i class="fa fa-check"></i><b>3.12</b> 数学公式和公式编号</a></li>
+<li class="chapter" data-level="3.13" data-path="r语言简介.html"><a href="r语言简介.html#定理类编号"><i class="fa fa-check"></i><b>3.13</b> 定理类编号</a></li>
+<li class="chapter" data-level="3.14" data-path="r语言简介.html"><a href="r语言简介.html#文献引用"><i class="fa fa-check"></i><b>3.14</b> 文献引用</a></li>
+<li class="chapter" data-level="3.15" data-path="r语言简介.html"><a href="r语言简介.html#插图"><i class="fa fa-check"></i><b>3.15</b> 插图</a></li>
+<li class="chapter" data-level="3.16" data-path="r语言简介.html"><a href="r语言简介.html#markdown表格"><i class="fa fa-check"></i><b>3.16</b> Markdown表格</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="coordinate-systems.html"><a href="coordinate-systems.html"><i class="fa fa-check"></i><b>4</b> Coordinate systems</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="coordinate-systems.html"><a href="coordinate-systems.html#线性坐标系统"><i class="fa fa-check"></i><b>4.1</b> 线性坐标系统</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="coordinate-systems.html"><a href="coordinate-systems.html#使用-coord_cartesian放大绘图"><i class="fa fa-check"></i><b>4.1.1</b> 使用 <code>coord_cartesian()</code>放大绘图</a></li>
+<li class="chapter" data-level="4.1.2" data-path="coordinate-systems.html"><a href="coordinate-systems.html#使用coord_flip翻转坐标轴"><i class="fa fa-check"></i><b>4.1.2</b> 使用<code>coord_flip()</code>翻转坐标轴</a></li>
+<li class="chapter" data-level="4.1.3" data-path="coordinate-systems.html"><a href="coordinate-systems.html#用coord_fixed进行等比例计算"><i class="fa fa-check"></i><b>4.1.3</b> 用<code>coord_fixed()</code>进行等比例计算</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="coordinate-systems.html"><a href="coordinate-systems.html#非线性坐标系统"><i class="fa fa-check"></i><b>4.2</b> 非线性坐标系统</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="coordinate-systems.html"><a href="coordinate-systems.html#用coord_trans进行转换"><i class="fa fa-check"></i><b>4.2.1</b> 用<code>coord_trans()</code>进行转换</a></li>
+<li class="chapter" data-level="4.2.2" data-path="coordinate-systems.html"><a href="coordinate-systems.html#使用-coord_polar的极坐标"><i class="fa fa-check"></i><b>4.2.2</b> 使用 <code>coord_polar()</code>的极坐标</a></li>
+<li class="chapter" data-level="4.2.3" data-path="coordinate-systems.html"><a href="coordinate-systems.html#使用coord_map进行地图投影"><i class="fa fa-check"></i><b>4.2.3</b> 使用<code>coord_map()</code>进行地图投影</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="theme-systems.html"><a href="theme-systems.html"><i class="fa fa-check"></i><b>5</b> Theme systems</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="theme-systems.html"><a href="theme-systems.html#简介"><i class="fa fa-check"></i><b>5.1</b> 简介</a></li>
+<li class="chapter" data-level="5.2" data-path="theme-systems.html"><a href="theme-systems.html#完整的主题"><i class="fa fa-check"></i><b>5.2</b> 完整的主题</a></li>
+<li class="chapter" data-level="5.3" data-path="theme-systems.html"><a href="theme-systems.html#修改主题组件"><i class="fa fa-check"></i><b>5.3</b> 修改主题组件</a></li>
+<li class="chapter" data-level="5.4" data-path="theme-systems.html"><a href="theme-systems.html#主题元素"><i class="fa fa-check"></i><b>5.4</b> 主题元素</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="theme-systems.html"><a href="theme-systems.html#图形元素"><i class="fa fa-check"></i><b>5.4.1</b> 图形元素</a></li>
+<li class="chapter" data-level="5.4.2" data-path="theme-systems.html"><a href="theme-systems.html#轴元素"><i class="fa fa-check"></i><b>5.4.2</b> 轴元素</a></li>
+<li class="chapter" data-level="5.4.3" data-path="theme-systems.html"><a href="theme-systems.html#图例元素"><i class="fa fa-check"></i><b>5.4.3</b> 图例元素</a></li>
+<li class="chapter" data-level="5.4.4" data-path="theme-systems.html"><a href="theme-systems.html#面板元素"><i class="fa fa-check"></i><b>5.4.4</b> 面板元素</a></li>
+<li class="chapter" data-level="5.4.5" data-path="theme-systems.html"><a href="theme-systems.html#分面元素"><i class="fa fa-check"></i><b>5.4.5</b> 分面元素</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tidyverse简介.html"><a href="tidyverse简介.html"><i class="fa fa-check"></i><b>6</b> Tidyverse简介</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据可视化和探索-1"><i class="fa fa-check"></i><b>6.1</b> 数据可视化和探索</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#ggplot2-1"><i class="fa fa-check"></i><b>6.1.1</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据处理和转换-1"><i class="fa fa-check"></i><b>6.2</b> 数据处理和转换</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#dplyr-1"><i class="fa fa-check"></i><b>6.2.1</b> dplyr</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#tidyr-1"><i class="fa fa-check"></i><b>6.2.2</b> tidyr</a></li>
+<li class="chapter" data-level="6.2.3" data-path="tidyverse简介.html"><a href="tidyverse简介.html#stringr-1"><i class="fa fa-check"></i><b>6.2.3</b> stringr</a></li>
+<li class="chapter" data-level="6.2.4" data-path="tidyverse简介.html"><a href="tidyverse简介.html#forcats-1"><i class="fa fa-check"></i><b>6.2.4</b> forcats</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据导入和管理-1"><i class="fa fa-check"></i><b>6.3</b> 数据导入和管理</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#tibble-1"><i class="fa fa-check"></i><b>6.3.1</b> tibble</a></li>
+<li class="chapter" data-level="6.3.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#readr-1"><i class="fa fa-check"></i><b>6.3.2</b> readr</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="tidyverse简介.html"><a href="tidyverse简介.html#功能性编程-1"><i class="fa fa-check"></i><b>6.4</b> 功能性编程</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#purrr-1"><i class="fa fa-check"></i><b>6.4.1</b> purrr</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="tidyverse简介.html"><a href="tidyverse简介.html#介绍-1"><i class="fa fa-check"></i><b>6.5</b> 介绍</a></li>
+<li class="chapter" data-level="6.6" data-path="tidyverse简介.html"><a href="tidyverse简介.html#章节结构-1"><i class="fa fa-check"></i><b>6.6</b> 章节结构</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">麻麻说我们可以用 R Markdown 写书了</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="coordinate-systems" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">第 4 章</span> Coordinate systems<a href="coordinate-systems.html#coordinate-systems" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>坐标系统有两项主要工作:</p>
+<ul>
+<li><p>将两个位置美学结合起来，在图上产生一个2d位置。位置美学被称为<code>x</code>和<code>y</code>，但它们被称为位置1和2可能更好，因为它们的含义取决于使用的坐标系。例如，在极坐标系统中，它们成为角度和半径（或半径和角度），而在地图中，它们成为纬度和经度。</p></li>
+<li><p>在与面计的协调下，坐标系统绘制轴和面板背景。虽然标尺控制了出现在轴上的值，以及它们如何从数据映射到位置，但实际上是坐标系在绘制它们。这是因为它们的外观取决于坐标系：一个角轴看起来与一个X轴完全不同。</p></li>
+</ul>
+<p>有两种类型的坐标系，线性坐标系统保留了几何体的形状。</p>
+<ul>
+<li><p><code>coord_cartesian()</code>：默认的笛卡尔坐标系，一个元素的2D位置是由X和Y的位置组合得到的。</p></li>
+<li><p><code>coord_flip()</code>：笛卡尔坐标系的x轴和y轴被翻转。</p></li>
+<li><p><code>coord_fixed()</code>：具有固定长宽比的笛卡尔坐标系。</p></li>
+</ul>
+<p>另一方面，非线性坐标系可以改变形状：一条直线可能不再是直线，两点之间的最近距离可能不再是一条直线。</p>
+<ul>
+<li><p><code>coord_map()/coord_quickmap()/coord_sf()</code>：地图的投影。</p></li>
+<li><p><code>coord_polar()</code>：极坐标。</p></li>
+<li><p><code>coord_trans()</code>：在数据经过统计处理后，对x和y位置进行任意转换。</p></li>
+</ul>
+<p>下面将对每个坐标系进行更详细的描述。</p>
+<div id="线性坐标系统" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> 线性坐标系统<a href="coordinate-systems.html#线性坐标系统" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>有三种线性坐标系统：<code>coord_cartesian()</code>,<code>coord_flip()</code>, <code>coord_fixed()</code>。</p>
+<p><img src="/Users/haoshi/Desktop/figure/1.png"></p>
+<div id="使用-coord_cartesian放大绘图" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> 使用 <code>coord_cartesian()</code>放大绘图<a href="coordinate-systems.html#使用-coord_cartesian放大绘图" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>coord_cartesian()有参数<code>xlim</code>和<code>ylim</code>。如当设置比例限制时，限制之外的任何数据都会被丢弃；但当设置坐标系限制时，我们仍然使用所有的数据，但我们只显示绘图的一个小区域。设置坐标系限制就像在放大镜下看图一样。</p>
+</div>
+<div id="使用coord_flip翻转坐标轴" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> 使用<code>coord_flip()</code>翻转坐标轴<a href="coordinate-systems.html#使用coord_flip翻转坐标轴" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>大多数统计学和几何学假设你对以x值为条件的y值感兴趣（例如，平滑图、汇总图、箱形图、直线图）：在大多数统计模型中，<code>x</code>值被假设为无误差测量。如果你对以y为条件的x感兴趣（或者你只是想把图旋转90度），你可以使用<code>coord_flip()</code>来交换<code>x</code>轴和<code>y</code>轴。</p>
+</div>
+<div id="用coord_fixed进行等比例计算" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> 用<code>coord_fixed()</code>进行等比例计算<a href="coordinate-systems.html#用coord_fixed进行等比例计算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>coord_fixed()</code>固定了<code>x</code>轴和<code>y</code>轴的长度比例。默认的比例确保<code>x</code>轴和<code>y</code>轴具有相等的比例：即沿x轴的1厘米与沿y轴的1厘米所代表的数据范围相同。长宽比也将被设置，以确保无论输出设备的形状如何，都能保持映射。更多的细节请参见<code>coord_fixed()</code>的文档。</p>
+</div>
+</div>
+<div id="非线性坐标系统" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> 非线性坐标系统<a href="coordinate-systems.html#非线性坐标系统" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>与线性坐标不同，非线性坐标可以改变几何体的形状。例如，在极坐标中，矩形变成了弧形；在地图投影中，两点之间的最短路径不一定是一条直线。</p>
+<p>转变分两步进行。首先，每个几何体的参数化被改变为纯粹基于位置，而不是基于位置和尺寸。例如，一个酒吧可以表示为一个X位置（一个位置），一个高度和一个宽度（两个维度）。在非笛卡尔坐标系中解释高度和宽度是很困难的，因为一个矩形可能不再有恒定的高度和宽度，所以我们转换为一个纯粹基于位置的表示，即由四个角定义的多边形。这就有效地将所有几何体转换为点、线和多边形的组合。</p>
+<p>一旦所有的几何体都有了基于位置的表示，下一步就是将每个位置转换成新的坐标系。转换点很容易，因为无论你在什么坐标系中，点仍然是一个点。线和多边形则比较难，因为一条直线在新的坐标系中可能不再是直线了。为了使问题具有可操作性，我们假设所有的坐标变换都是平滑的，也就是说，所有非常短的线在新的坐标系中仍然是非常短的直线。有了这个假设，我们就可以通过将直线和多边形分割成许多小线段并对每个线段进行转换。这个过程被称为 “咀嚼”。</p>
+<div id="用coord_trans进行转换" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> 用<code>coord_trans()</code>进行转换<a href="coordinate-systems.html#用coord_trans进行转换" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>coord_trans()</code>的参数x和y应该是命名转化器或转化器对象的字符串。在尺度层面的转换发生在计算统计数据之前，不会改变几何体的形状。在坐标系层面的转换发生在统计数字被计算之后，并且确实会影响几何体的形状。同时使用这两种方法可以让我们在转换后的尺度上对数据进行建模，然后再进行反转换以进行解释：这是分析中的一种常见模式。</p>
+</div>
+<div id="使用-coord_polar的极坐标" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> 使用 <code>coord_polar()</code>的极坐标<a href="coordinate-systems.html#使用-coord_polar的极坐标" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>使用极坐标可以产生饼状图和风玫瑰（来自条形几何体），以及雷达图（来自线状几何体）。极坐标经常被用于圆形数据，特别是时间或方向，但其感知特性并不好，因为小半径的角度比大半径的角度更难感知。theta参数决定了哪个位置变量被映射为角度（默认为x），哪个被映射为半径。</p>
+</div>
+<div id="使用coord_map进行地图投影" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> 使用<code>coord_map()</code>进行地图投影<a href="coordinate-systems.html#使用coord_map进行地图投影" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>地图在本质上是球形数据的显示。简单地绘制原始经度和纬度会产生误导，所以我们必须对数据进行投影。有两种方法可以用ggplot2做到这一点。</p>
+<ul>
+<li><p><code>coord_quickmap()</code>是一个快速而肮脏的近似方法，它设置长宽比以确保1米的纬度和1米的经度在图的中间有相同的距离。对于较小的区域来说，这是一个合理的起点，而且非常快。</p></li>
+<li><p><code>coord_map()</code>使用mapproj包，(<a href="https://cran.r-project.org/package=mapproj" class="uri">https://cran.r-project.org/package=mapproj</a>)，做一个正式的地图投影。它需要和<code>mapproj::mapproject()</code>一样的参数来控制投影。它比<code>coord_quickmap()</code>慢得多，因为它必须咀嚼数据并转换每一块。</p></li>
+</ul>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r语言简介.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="theme-systems.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/Coordinate-and-theme.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

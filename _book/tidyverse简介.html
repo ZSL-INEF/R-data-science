@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 7 章 Tidyverse简介 | 麻麻说我们可以用 R Markdown 写书了</title>
+  <meta name="description" content="一个简单的中文书示例。" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 7 章 Tidyverse简介 | 麻麻说我们可以用 R Markdown 写书了" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="一个简单的中文书示例。" />
+  <meta name="github-repo" content="yihui/bookdown-chinese" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 7 章 Tidyverse简介 | 麻麻说我们可以用 R Markdown 写书了" />
+  
+  <meta name="twitter:description" content="一个简单的中文书示例。" />
+  
+
+<meta name="author" content="张三" />
+
+
+<meta name="date" content="2022-10-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="r语言常用快捷键.html"/>
+<link rel="next" href="tidyverse简介-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 牛刀小试</a></li>
+<li class="chapter" data-level="2" data-path="wind.html"><a href="wind.html"><i class="fa fa-check"></i><b>2</b> 白苹风末</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="wind.html"><a href="wind.html#张老爷子"><i class="fa fa-check"></i><b>2.1</b> 张老爷子</a></li>
+<li class="chapter" data-level="2.2" data-path="wind.html"><a href="wind.html#彭大将领"><i class="fa fa-check"></i><b>2.2</b> 彭大将领</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html#author"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="chapter" data-level="3" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html"><i class="fa fa-check"></i><b>3</b> ggplot2语法结构——七层结构</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#第一层数据data"><i class="fa fa-check"></i><b>3.1</b> 第一层：数据（Data）</a></li>
+<li class="chapter" data-level="3.2" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#第二层视觉映射aesthetics"><i class="fa fa-check"></i><b>3.2</b> 第二层：视觉映射（Aesthetics）</a></li>
+<li class="chapter" data-level="3.3" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#第三层几何对象geometries"><i class="fa fa-check"></i><b>3.3</b> 第三层：几何对象（Geometries）</a></li>
+<li class="chapter" data-level="3.4" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#coordinate-systems"><i class="fa fa-check"></i><b>3.4</b> Coordinate systems</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#线性坐标系统"><i class="fa fa-check"></i><b>3.4.1</b> 线性坐标系统</a></li>
+<li class="chapter" data-level="3.4.2" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#非线性坐标系统"><i class="fa fa-check"></i><b>3.4.2</b> 非线性坐标系统</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#theme-systems"><i class="fa fa-check"></i><b>3.5</b> Theme systems</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#简介"><i class="fa fa-check"></i><b>3.5.1</b> 简介</a></li>
+<li class="chapter" data-level="3.5.2" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#完整的主题"><i class="fa fa-check"></i><b>3.5.2</b> 完整的主题</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#修改主题组件"><i class="fa fa-check"></i><b>3.6</b> 修改主题组件</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="ggplot2语法结构七层结构.html"><a href="ggplot2语法结构七层结构.html#主题元素"><i class="fa fa-check"></i><b>3.6.1</b> 主题元素</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="r语言简介.html"><a href="r语言简介.html"><i class="fa fa-check"></i><b>4</b> R语言简介</a></li>
+<li class="chapter" data-level="5" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i><b>5</b> RStudio</a></li>
+<li class="chapter" data-level="6" data-path="r语言常用快捷键.html"><a href="r语言常用快捷键.html"><i class="fa fa-check"></i><b>6</b> R语言常用快捷键</a></li>
+<li class="chapter" data-level="7" data-path="tidyverse简介.html"><a href="tidyverse简介.html"><i class="fa fa-check"></i><b>7</b> Tidyverse简介</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据可视化和探索"><i class="fa fa-check"></i><b>7.1</b> 数据可视化和探索</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#ggplot2"><i class="fa fa-check"></i><b>7.1.1</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据处理和转换"><i class="fa fa-check"></i><b>7.2</b> 数据处理和转换</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#dplyr"><i class="fa fa-check"></i><b>7.2.1</b> dplyr</a></li>
+<li class="chapter" data-level="7.2.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#tidyr"><i class="fa fa-check"></i><b>7.2.2</b> tidyr</a></li>
+<li class="chapter" data-level="7.2.3" data-path="tidyverse简介.html"><a href="tidyverse简介.html#stringr"><i class="fa fa-check"></i><b>7.2.3</b> stringr</a></li>
+<li class="chapter" data-level="7.2.4" data-path="tidyverse简介.html"><a href="tidyverse简介.html#forcats"><i class="fa fa-check"></i><b>7.2.4</b> forcats</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="tidyverse简介.html"><a href="tidyverse简介.html#数据导入和管理"><i class="fa fa-check"></i><b>7.3</b> 数据导入和管理</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#tibble"><i class="fa fa-check"></i><b>7.3.1</b> tibble</a></li>
+<li class="chapter" data-level="7.3.2" data-path="tidyverse简介.html"><a href="tidyverse简介.html#readr"><i class="fa fa-check"></i><b>7.3.2</b> readr</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="tidyverse简介.html"><a href="tidyverse简介.html#功能性编程"><i class="fa fa-check"></i><b>7.4</b> 功能性编程</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="tidyverse简介.html"><a href="tidyverse简介.html#purrr"><i class="fa fa-check"></i><b>7.4.1</b> purrr</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html"><i class="fa fa-check"></i><b>8</b> Tidyverse简介</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#数据可视化和探索-1"><i class="fa fa-check"></i><b>8.1</b> 数据可视化和探索</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#ggplot2-1"><i class="fa fa-check"></i><b>8.1.1</b> ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#数据处理和转换-1"><i class="fa fa-check"></i><b>8.2</b> 数据处理和转换</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#dplyr-1"><i class="fa fa-check"></i><b>8.2.1</b> dplyr</a></li>
+<li class="chapter" data-level="8.2.2" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#tidyr-1"><i class="fa fa-check"></i><b>8.2.2</b> tidyr</a></li>
+<li class="chapter" data-level="8.2.3" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#stringr-1"><i class="fa fa-check"></i><b>8.2.3</b> stringr</a></li>
+<li class="chapter" data-level="8.2.4" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#forcats-1"><i class="fa fa-check"></i><b>8.2.4</b> forcats</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#数据导入和管理-1"><i class="fa fa-check"></i><b>8.3</b> 数据导入和管理</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#tibble-1"><i class="fa fa-check"></i><b>8.3.1</b> tibble</a></li>
+<li class="chapter" data-level="8.3.2" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#readr-1"><i class="fa fa-check"></i><b>8.3.2</b> readr</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#功能性编程-1"><i class="fa fa-check"></i><b>8.4</b> 功能性编程</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#purrr-1"><i class="fa fa-check"></i><b>8.4.1</b> purrr</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#介绍"><i class="fa fa-check"></i><b>8.5</b> 介绍</a></li>
+<li class="chapter" data-level="8.6" data-path="tidyverse简介-1.html"><a href="tidyverse简介-1.html#章节结构"><i class="fa fa-check"></i><b>8.6</b> 章节结构</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="r-shiny.html"><a href="r-shiny.html"><i class="fa fa-check"></i><b>9</b> R shiny</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="r-shiny.html"><a href="r-shiny.html#介绍-1"><i class="fa fa-check"></i><b>9.1</b> 介绍</a></li>
+<li class="chapter" data-level="9.2" data-path="r-shiny.html"><a href="r-shiny.html#章节结构-1"><i class="fa fa-check"></i><b>9.2</b> 章节结构</a></li>
+<li class="chapter" data-level="9.3" data-path="r-shiny.html"><a href="r-shiny.html#书的编译"><i class="fa fa-check"></i><b>9.3</b> 书的编译</a></li>
+<li class="chapter" data-level="9.4" data-path="r-shiny.html"><a href="r-shiny.html#交叉引用"><i class="fa fa-check"></i><b>9.4</b> 交叉引用</a></li>
+<li class="chapter" data-level="9.5" data-path="r-shiny.html"><a href="r-shiny.html#数学公式和公式编号"><i class="fa fa-check"></i><b>9.5</b> 数学公式和公式编号</a></li>
+<li class="chapter" data-level="9.6" data-path="r-shiny.html"><a href="r-shiny.html#定理类编号"><i class="fa fa-check"></i><b>9.6</b> 定理类编号</a></li>
+<li class="chapter" data-level="9.7" data-path="r-shiny.html"><a href="r-shiny.html#文献引用"><i class="fa fa-check"></i><b>9.7</b> 文献引用</a></li>
+<li class="chapter" data-level="9.8" data-path="r-shiny.html"><a href="r-shiny.html#插图"><i class="fa fa-check"></i><b>9.8</b> 插图</a></li>
+<li class="chapter" data-level="9.9" data-path="r-shiny.html"><a href="r-shiny.html#markdown表格"><i class="fa fa-check"></i><b>9.9</b> Markdown表格</a></li>
+<li class="chapter" data-level="9.10" data-path="r-shiny.html"><a href="r-shiny.html#r-blogdown-简介和安装"><i class="fa fa-check"></i><b>9.10</b> R blogdown 简介和安装</a></li>
+<li class="chapter" data-level="9.11" data-path="r-shiny.html"><a href="r-shiny.html#安装"><i class="fa fa-check"></i><b>9.11</b> 安装</a>
+<ul>
+<li class="chapter" data-level="9.11.1" data-path="r-shiny.html"><a href="r-shiny.html#blogdown"><i class="fa fa-check"></i><b>9.11.1</b> blogdown</a></li>
+<li class="chapter" data-level="9.11.2" data-path="r-shiny.html"><a href="r-shiny.html#hugo-框架"><i class="fa fa-check"></i><b>9.11.2</b> Hugo 框架</a></li>
+</ul></li>
+<li class="chapter" data-level="9.12" data-path="r-shiny.html"><a href="r-shiny.html#用-r-blogdown-搭建个人博客"><i class="fa fa-check"></i><b>9.12</b> 用 R blogdown 搭建个人博客</a>
+<ul>
+<li class="chapter" data-level="9.12.1" data-path="r-shiny.html"><a href="r-shiny.html#创建示例网站"><i class="fa fa-check"></i><b>9.12.1</b> 创建示例网站</a></li>
+<li class="chapter" data-level="9.12.2" data-path="r-shiny.html"><a href="r-shiny.html#发布网站"><i class="fa fa-check"></i><b>9.12.2</b> 发布网站</a></li>
+<li class="chapter" data-level="9.12.3" data-path="r-shiny.html"><a href="r-shiny.html#网站更新"><i class="fa fa-check"></i><b>9.12.3</b> 网站更新</a></li>
+<li class="chapter" data-level="9.12.4" data-path="r-shiny.html"><a href="r-shiny.html#发布新帖子"><i class="fa fa-check"></i><b>9.12.4</b> 发布新帖子</a></li>
+<li class="chapter" data-level="9.12.5" data-path="r-shiny.html"><a href="r-shiny.html#自动同步"><i class="fa fa-check"></i><b>9.12.5</b> 自动同步</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">麻麻说我们可以用 R Markdown 写书了</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tidyverse简介" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">第 7 章</span> Tidyverse简介<a href="tidyverse简介.html#tidyverse简介" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Tidyverse是R语言的一个程序包，是由伟大的Hadley Wickham和他的团队创建的，目的是提供所有这些工具来清理和处理数据。Tidy的意思是干净、整洁。Verse的意思是诗歌、歌曲。那么Tidyverse的意思就是干净整洁的语句。</p>
+<p>Tidyverse可以大大简化数据处理和分析，它有八个核心软件包，分别是ggplot2、dplyr、tidyr、readr、purrr、tibble、stringr和forcats。所有这些包都是通过install.packages(“tidyverse”)命令一次性自动加载的。除了这些包之外，Tidyverse还有一些特殊的包，它们不是自动加载的，而是需要自己调用的。这些包括用于关系数据库的DBI。用于网络API的httr，用于网络刮削的rvest，等等。</p>
+<div id="数据可视化和探索" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> 数据可视化和探索<a href="tidyverse简介.html#数据可视化和探索" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ggplot2" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> ggplot2<a href="tidyverse简介.html#ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>ggplot2是一个基于The Grammar of Graphics的R数据可视化库。ggplot2可以使用高级API创建数据可视化，如柱状图、饼图、柱状图、散点图、误差图等。它还允许你在单个可视化中添加不同类型的数据可视化组件或层。一旦ggplot2被告知哪些变量要映射到图中的哪些美学，它就会完成剩下的工作，这样用户就可以专注于解释可视化，而在创建可视化时花费更少的时间。但这也意味着不可能在ggplot2中创建高度定制的图形。但在RStudio社区和Stack Overflow中有很多资源，可以在需要时提供ggplot2的帮助。</p>
+</div>
+</div>
+<div id="数据处理和转换" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> 数据处理和转换<a href="tidyverse简介.html#数据处理和转换" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="dplyr" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> dplyr<a href="tidyverse简介.html#dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>dplyr是R语言中一个非常流行的数据处理库，它有五个重要的函数，与group_by()函数自然结合，可以帮助分组执行这些函数。这些函数包括mutate()函数，它可以添加新的变量，这些变量是现有变量的函数，select()函数根据变量的名称选择变量，filter()函数根据变量的值选择变量，summaryise()函数将多个值缩减为一个摘要，arrange()函数安排排列行的顺序。</p>
+</div>
+<div id="tidyr" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> tidyr<a href="tidyverse简介.html#tidyr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>tidyr是R语言中的一个数据清理库，它有助于创建整洁的数据。整齐的数据意味着所有的数据单元都有一个单一的值，每一列数据都是一个变量，每一行数据都是一个观察值。这种整洁的数据是tidyverse的主要内容，它确保了更多的时间花在数据分析和从数据中获取价值上，而不是不断地清洗数据和修改工具来处理不整洁的数据。tidyr中的功能大致分为五类，即：透视，在长形和宽形之间改变数据；嵌套，改变分组数据，使一个组成为具有嵌套数据框架的单行；拆分字符列，然后合并它们。将嵌套的列表转换为整齐的二维码，并将隐式缺失值转换为显式值。</p>
+</div>
+<div id="stringr" class="section level3 hasAnchor" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> stringr<a href="tidyverse简介.html#stringr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>stringr是一个库，有许多用于数据清理和数据准备任务的功能。它也是为处理字符串而设计的，并且有许多函数使这一过程变得简单。stringr是建立在stringi之上的，而stringi是International Components for Unicode C库。因此，如果有任何你想使用但在stringr中找不到的函数，那么最好的地方就是stringi。这也意味着，一旦你掌握了stringr，stringi的使用就不那么困难了，因为这两个包都有类似的约定。stringr中的所有函数都以str开头，它们接受一个字符串向量作为其第一个参数。其中一些函数包括str_detect(), str_extract(), str_match(), str_count(), str_replace(), str_subset()，等等。</p>
+</div>
+<div id="forcats" class="section level3 hasAnchor" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> forcats<a href="tidyverse简介.html#forcats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>forcats是一个R库，主要是处理与向量有关的问题。这些向量是有一组固定的可能取值的变量，这些值是事先知道的。所以forecats处理的问题包括改变向量中的值的顺序，重新排序向量等。forcats中的一些函数是fct_relevel()，它通过手工对向量进行排序，fct_reorder()使用另一个变量对一个因子进行排序，fct_infreq()通过频率值对一个因子进行排序等等。</p>
+</div>
+</div>
+<div id="数据导入和管理" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> 数据导入和管理<a href="tidyverse简介.html#数据导入和管理" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tibble" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> tibble<a href="tidyverse简介.html#tibble" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>tibble是data.frame的一种形式，它包括了其中有用的部分，而抛弃了不太重要的部分。所以tibbles不会像data.frame那样改变变量的名称或类型，也不会做部分匹配，但它们能更快地将问题暴露出来，例如当一个变量不存在时。因此，使用Tibbles的代码要比以前干净和有效得多。Tibbles也更容易用于包含更复杂对象的更大的数据集，部分原因是增强了print()方法。你可以使用tibble()函数从列向量创建新的tibbles，你也可以使用tribble()函数逐行创建一个tibble。</p>
+</div>
+<div id="readr" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> readr<a href="tidyverse简介.html#readr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>这个库提供了一个简单而快速的方法来读取矩形数据，如文件格式tsv, csv, delim, fwf等。readr可以使用一个解析整个文件的函数和另一个专注于特定列的函数来解析许多不同类型的数据。这个列规范定义了将该列中的数据从字符向量转换为最适合的数据类型的方法。在大多数情况下，这是 readr 自动完成的。 readr 可以使用不同的函数读取不同类型的文件格式，即 read_csv() 用于逗号分隔的文件，read_tsv() 用于标签分隔的文件，read_table() 用于表格文件，read_fwf() 用于固定宽度的文件，read_delim() 用于分隔文件，以及，read_log() 用于网页日志文件。</p>
+</div>
+</div>
+<div id="功能性编程" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> 功能性编程<a href="tidyverse简介.html#功能性编程" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="purrr" class="section level3 hasAnchor" number="7.4.1">
+<h3><span class="header-section-number">7.4.1</span> purrr<a href="tidyverse简介.html#purrr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Purrr是一套详细的函数和向量工具，它主要用于管理R语言中的函数式编程。一个很好的例子是map()函数，它被用来取代多个for循环，这些for循环使代码变得复杂和混乱，从而使代码更简单，易于阅读。除此之外，所有的purrr函数都是类型稳定的，这意味着它们要么返回宣传的输出类型，如果不可能，则会给出一个错误。</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r语言常用快捷键.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tidyverse简介-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/R语言介绍.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
