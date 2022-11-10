@@ -1,3 +1,3 @@
-# bookdown 中文范例
+# R 数据科学在体育运动中的应用
 
-这是一个简单的用 **bookdown** 写中文书的例子。在使用它之前，建议您至少泛读一遍 [**bookdown** 官方文档](https://bookdown.org/yihui/bookdown)。
+本书全本已开源于Github网站
