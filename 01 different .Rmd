@@ -1,0 +1,179 @@
+---
+title: "描述性和差异统计"
+author: "Dr. Zhang"
+date: "2022-11-10"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(openxlsx)
+library(bruceR)
+data <- read.xlsx("~/desktop/UEFA.xlsx")
+View(data)
+str(data)
+```
+
+```{r}
+library(tidyverse)
+df <- data %>% 
+  select(Shots:Yellow_Cards)
+Describe(df) #描述性统计
+```
+
+#4.1.1 描述性统计
+
+#4.1.1.1 描述水平的统计量
+
+#4.1.1.2 描述差异的统计量
+
+#4.1.1.3 描述分布形状的统计量
+
+#4.1.1.4 包的介绍
+
+#4.1.2 差异统计
+
+#4.1.2.1 两组差异分析
+
+TTEST()：单样本/独立样本/配对样本t检验（输出效应量Cohen's
+d及其95%置信区间、贝叶斯因子BF10）
+
+主要参数
+data：数据框（必须为宽数据，即一行代表一个人，重复测量占多个变量）
+
+y：因变量（可批量分析多个因变量；如果是配对样本t检验，则需要是偶数个）
+
+x：自变量（可批量分析多个自变量；只有在独立样本t检验中需要定义这个参数）
+
+paired：是否为配对样本t检验？默认是FALSE
+
+var.equal：是否满足方差齐性？默认是TRUE，结果中有方差齐性Levene检验可供参考
+
+mean.diff：是否报告原始的均值差异和95%置信区间？默认是TRUE
+test.value：假设检验的数值，默认是0（一般用不到这个参数）
+test.sided：假设检验的方向，默认是双尾（一般用不到这个参数）
+factor.rev：是否比较"高 vs. 低"而不是"低 vs. 高"？默认是TRUE
+bayes.prior：贝叶斯检验的先验分布，默认是0.707
+
+digits：保留的小数位数，默认是2位小数
+
+file：保存的Word文档，默认输出到R控制台
+
+```{r}
+library(tidyverse)
+df <- data %>% 
+  filter(League %in% c("Premier League","La Liga")) %>% 
+  select(League,Shots:Yellow_Cards)
+
+library(performance)
+
+```
+
+```{r}
+#独立样本t检验
+library(bruceR)
+#一个自变量之间的差异
+TTEST(df, "Shots", x="League", mean.diff = TRUE) #是否显示均值差异及95%置信区间
+#多个自变量之间的差异
+TTEST(df, y=c("Shots", "Possession", "Tackles"), x="League", var.equal=FALSE) #3个自变量分别计算
+```
+
+#4.1.2.2 两组以上或多组差异分析
+
+```{r}
+library(tidyverse)
+df1 <- data %>% filter(League != "Other Leagues")
+MANOVA(data=df1, dv="Possession", between="League") %>%
+  EMMEANS("League", p.adjust="Bonferroni")
+```
+
+```{r}
+MANOVA(data=df1, dv="Possession", between=c("League", "Result")) %>%
+  EMMEANS("League") %>%
+  EMMEANS("League", by="Result") %>%
+  EMMEANS("Result") %>%
+  EMMEANS("Result", by="League")
+```
+
+#4.1.2.3 卡方分析
+
+```{r}
+library(ggstatsplot)
+ggpiestats(
+  data         = df1,
+  x            = League,
+  y            = Result,
+  package      = "wesanderson",
+  palette      = "Royal1",
+  title        = "Analysis of UEFA Champions League matches", ## title for the plot
+  legend.title = "League", ## title for the legend
+  caption      = "Source: ZSLINEF"
+)
+```
+
+
+#多元回归分析
+一般来说，线性回归需要满足以下几个前提条件，方可进行之后的线性回归分析（括号内链接是相应统计概念的讲解）：
+
+01 观测值（y）服从正态分布
+y的正态性来自残差（ε）和自变量（x）两部分，而x的变化导致的y的变化正是x对y的影响，因此在数据诊断时，只需判断ε是否服从正态分布。
+(<http://blog.sciencenet.cn/blog-3442043-1281478.html>）
+
+02 自变量（x）之间非共线性 若x相关性过高，会导致x参数估计不可区分。
+(<http://www.datasoldier.net/archives/1668>
+
+03 保证残差方差齐性 残差与拟合值之间无明显关系，即拟合值没有偏向性。
+（<http://www.datasoldier.net/archives/1699>）
+
+```{r}
+library(performance)
+
+lm1 <- lm(Shots ~ Passes+Open_Play+Crosses+Possession +Counter_Attack, data = df1)
+
+result1 <- check_collinearity(lm1)
+plot(result1)
+
+result2 <- check_normality(lm1)
+plot(result2)
+
+result3 <- check_heteroscedasticity(lm1)
+plot(result3)
+
+result4 <- check_outliers(lm1)
+plot(result4)
+#残差在不同的拟合值下存在波动，说明拟合值有偏向性，即方差非齐性。
+```
+
+```{r}
+library(data.table)
+library(performance)
+library(see)
+
+library(performance)
+lm1 <- lm(Shots ~ Passes+Open_Play+Crosses+Possession +Counter_Attack, data = df1)
+summary(lm1)
+model_performance(lm1)
+check_model(lm1)
+```
+
+```{r}
+library(performance)
+lm2 <- lm(Shots ~ Passes+Open_Play+Crosses+Possession +Counter_Attack + Yellow_Cards, family = poisson(), data = df1)
+summary(lm2)
+model_performance(lm2)
+check_model(lm2)
+```
+
+```{r}
+compare_performance(lm1, lm2, rank = TRUE)
+plot(compare_performance(lm1, lm2, rank = TRUE))
+```
+
+
