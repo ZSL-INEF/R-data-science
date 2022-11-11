@@ -1,7 +1,7 @@
 --- 
 title: "麻麻说我们可以用 R Markdown 写书了"
 author: "张三"
-date: "2022-11-10"
+date: "2022-11-11"
 documentclass: ctexbook
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
@@ -30,39 +30,35 @@ sessionInfo()
 ```
 
 ```
-## R version 4.2.1 (2022-06-23 ucrt)
-## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 10 x64 (build 19043)
+## R version 4.1.2 (2021-11-01)
+## Platform: x86_64-apple-darwin17.0 (64-bit)
+## Running under: macOS Catalina 10.15.7
 ## 
 ## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
 ## 
 ## locale:
-## [1] LC_COLLATE=Chinese_China.936 
-## [2] LC_CTYPE=Chinese_China.936   
-## [3] LC_MONETARY=Chinese_China.936
-## [4] LC_NUMERIC=C                 
-## [5] LC_TIME=Chinese_China.936    
-## system code page: 65001
+## [1] zh_CN.UTF-8/zh_CN.UTF-8/zh_CN.UTF-8/C/zh_CN.UTF-8/zh_CN.UTF-8
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets 
 ## [6] methods   base     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] bookdown_0.29   digest_0.6.29   R6_2.5.1       
-##  [4] jsonlite_1.8.2  magrittr_2.0.3  evaluate_0.16  
-##  [7] stringi_1.7.8   cachem_1.0.6    rlang_1.0.6    
-## [10] cli_3.4.1       rstudioapi_0.14 jquerylib_0.1.4
-## [13] bslib_0.4.0     rmarkdown_2.16  tools_4.2.1    
-## [16] stringr_1.4.1   xfun_0.33       yaml_2.3.5     
-## [19] fastmap_1.1.0   compiler_4.2.1  htmltools_0.5.3
-## [22] knitr_1.40      sass_0.4.2
+##  [1] bookdown_0.29   digest_0.6.30   R6_2.5.1       
+##  [4] jsonlite_1.8.0  magrittr_2.0.3  evaluate_0.18  
+##  [7] stringi_1.7.8   rlang_1.0.6     cli_3.4.1      
+## [10] rstudioapi_0.13 jquerylib_0.1.4 bslib_0.3.1    
+## [13] rmarkdown_2.14  tools_4.1.2     stringr_1.4.1  
+## [16] xfun_0.34       yaml_2.3.6      fastmap_1.1.0  
+## [19] compiler_4.1.2  htmltools_0.5.3 knitr_1.40     
+## [22] sass_0.4.2
 ```
 
 ## 致谢 {-}
 
 非常感谢谁谁以及谁谁对我的帮助。艾玛，要不是他们神一样的队友，我两年前就写完这本书了。
 
-\BeginKnitrBlock{flushright}<p class="flushright">张三  
-于 A 村某角落</p>\EndKnitrBlock{flushright}
+\BeginKnitrBlock{flushright}<p class="flushright">李震紐幣</p>\EndKnitrBlock{flushright}
 
