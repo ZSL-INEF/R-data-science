@@ -1,0 +1,183 @@
+# 体育运动科学领域的专业R包
+
+## 个人运动项目R包
+
+### 游泳
+
+- `SwimmeR`可以读取各种格式的游泳成绩，并输出整洁的数据集。它还包括短道码（SCY）、短道米（SCM）和长道米（LCM）之间的时间转换功能。
+
+### 田径
+
+- `combinedevents`包含用于计算田径综合项目比赛的得分和分数的函数(基于国际田联的评分表)。
+
+- `JumpeR`包含导入和分析田径数据的功能。
+
+### 赛车F1
+
+- `f1dataR`通过`fastf1python库`包装Ergast API Formula 1数据和F1官方数据的功能集合。
+
+### 电子竞技
+
+- `CSGo`从Steam API中收集反恐精英全球攻势的数据。
+
+- `rbedrock`支持Minecraft（Bedrock版）的数据分析和管理。
+
+- `ROpenDota`、`opendotaR`和`RDota2`从OpenDota和Steam API中提取Dota2数据。
+
+### 国际象棋
+
+- `chess`是一个围绕Python-chess的R的意见包装器。它读取和写入PGN文件和棋盘的SVG。
+
+- `stockfish`实现了UCI开放通信协议，并与`stockfish`一起使用，`stockfish`是一个流行的、开源的、强大的用C++编写的国际象棋引擎。
+
+- 像国际象棋一样，`bigchess`可以读写PGN文件。和`stockfish`一样，`bigchess`为UCI国际象棋引擎提供了一个API。`bigchess`也能够一次读取多个比赛文件，而不需要复制到RAM中。
+
+- `rchess`提供了国际象棋验证、棋子移动、检查检测和绘制棋盘的功能。
+
+- `chessR (archived)`允许用户从在线国际象棋应用程序中获取棋谱数据，包括[chess.com](chess.com)和Lichess。
+
+### 科学化运动训练监控
+
+## 团体运动项目R包
+
+### 篮球
+
+- `BAwiR`是一个分析篮球数据的工具集合，重点是数据获取和可视化。
+
+- `AdvancedBasketballStats`提供了计算和分析球员、球队、阵容（五人组）和比赛的篮球统计数据的功能。
+
+- `uncmbb`包含自1949-50赛季以来北卡罗来纳大学（教堂山分校）男子篮球比赛结果的数据。
+
+- `BasketballAnalyzeR`基于《Basketball Data Science With Applications in R》一书。包含一些用于分析和可视化的篮球数据和函数。
+
+- `NBAloveR`是一个R接口，用于从Basketball Reference API访问篮球数据。这个包还包含帮助用户分析篮球数据的函数。
+
+- `wehoop`提供了从ESPN API访问女子大学篮球和WNBA数据的函数。
+
+- `hoopR`包括从不同来源访问大学男子篮球和NBA数据的函数，包括ESPN、NBA Stats API和Ken Pomeroy的大学篮球评级。
+
+- `toRvik (archived) `包括从Barttorvik获取大学男子篮球高级指标、球员和比赛统计等数据的功能。
+  
+### 足球
+- `worldfootballR`提供来自许多热门网站的干净整洁的足球数据，包括FBref、Transfermarkt的转会和估值数据以及Understat和fotmob的射击位置数据。
+
+- 欧洲足球数据可以通过`engsoccerdata`包获得，可追溯到1871年的英国和其他欧洲足球联赛的比赛结果。
+
+- `socceR`提供评估足球预测和模拟足球比赛和锦标赛结果的功能。
+
+- `StatsBombR`用于直接从API中提取StatsBomb的数据。目前，只适用于Windows电脑。
+
+- `ggsoccer`提供了在ggplot2中可视化足球比赛数据的功能。
+
+- `footballpenaltiesBL`包含数据和绘图功能，用于分析1963-64赛季至2016-17赛季德甲的点球。
+
+- `footBayes`包含通过哈密尔顿蒙特卡洛（Hamilton Monte Carlo）和使用Stan的最大似然估计方法拟合广为人知的足球模型（双泊松分布、双变量泊松分布、Skellam分布、t检验）的功能。该包还提供了用于可视化球队实力和预测比赛结果的工具。
+
+- `itscalledsoccer (archived)`通过美国足球分析应用程序API实现对美国足球（MLS、NWSL和USL）数据的访问。
+
+- `FPLdata`包含在幻想超级联赛上检索玩家属性的功能。
+
+- `EUfootball`提供2010-11赛季至2019-20赛季英国、法国、德国、意大利、西班牙、荷兰和土耳其顶级联赛的欧洲足球比赛结果。
+
+- `CodaBonito`用于足球相关的可视化和分析
+
+### 橄榄球
+
+- `nflverse`是用于获取和分析NFL数据的软件包集合，包括`nflfastR`、`nflseedR`、`nfl4th`、`nflreadr`和`nflplotR`。
+
+- `nflfastR`包含一些函数，可以高效地获取1999年至今的NFL逐场比赛数据。它类似于`nflscrapR`，但速度要快得多。`nflfastR`所需的所有模型都托管在`fastr`模型中。
+
+- `nflreadr`可以从`nflverse`项目的GitHub存储库中高效地下载数据，包括预先计算的`nflfastR`数据帧。
+
+- `nfl4th`由计算NFL？？？？的函数组成。？？？？的数据是从NFL和ESPN收集的。
+
+- `nflseedR`包含根据复杂的NFL打破平局规则对NFL球队进行排名的功能。它包括分区排名、季后赛种子排名和选秀顺序。
+
+- `nflplotR`包含使ggplot2中的NFL数据可视化更容易的功能。
+
+- `nflscrapR`包允许数据驱动的体育爱好者使用NFL JSON API数据来进行比赛、赛季和球员层面的详细分析。这个包中的函数有助于为R用户解析和清理[NFL.com](NFL.com)的数据。这个包的建立是为了加强专门针对橄榄球的高级体育分析研究，希望能开发出对专业NFL球队和公众都有潜在帮助的指标和见解。
+
+- `NFLSimulatoR`由模拟比赛和驱动器的工具组成，并进一步评估NFL的比赛战术策略。
+
+- `fflr`提供从ESPN幻想足球API访问ESPN幻想足球原始数据并格式化原始数据的功能。
+
+- `ffscrapr`通过一致的界面和内置身份验证、速率限制和缓存来帮助访问各种幻想足球API，包括MFL、Sleeper、ESPN和Fleaflicker。
+
+- `ffsimulator`允许用户使用自举重采样（bootstrap-resampling）模拟幻想足球赛季。模拟基于历史排名和`nflfastR`包的数据。此外，还提供了计算最佳阵容和汇总结果的功能。
+
+- `gsisdecoder`包含解码NFL Player ID的功能，以便与`nflfastR`包一起使用。
+
+- `cfbfastR`提供从 [collegefootballdata.com](collegefootballdata.com)网站获取大学橄榄球比赛逐场数据的功能。
+
+- `cfbscrapR`用于处理大学足球数据的R包。它是`cfbscrapR`团队提供的围绕<https://collegefootballdata.com/>的R API封装器。它为用户提供了访问大量端点的能力，并通过额外的信息（增加的预期分数/增加的获胜概率）来补充这些数据。
+
+### 澳式足球
+
+- `fitzRoy`是一个用于获取和处理澳大利亚足球联赛（AFL）数据的软件包。`fitzRoy`提供开源访问，如AFL Tables、Footy Wire和The Squiggle。
+
+### 棒球
+
+- 历史棒球数据可以通过`Lahman`包获得，它包含了MLB自1871年以来的各赛季数据。
+
+- `retrosheet`便于从[Retrosheet.org](Retrosheet.org)下载比赛记录、球队ID、花名册和比赛场上的行为事件以及其他文件，并将结果作为数据帧返回。可以采用本地缓存来提高效率。请注意，返回的逐场比赛数据直接来自比赛文件，没有经过解析（即Chadwick没有被捆绑）。
+
+- `pitchRx`通过MLB高级媒体API提供对投球数据的访问。该软件包在Marchi, M., Albert, J., and Baumer, B. S. (2018). Analyzing baseball data with R (doi:10.1201/9781351107099).中占据了突出地位。用R分析棒球数据（doi:10.1201/9781351107099）。该包的完整描述见Sievert, C. (2014). Taming PITCHf/x Data with XML2R and pitchRx (doi:10.32614/RJ-2014-001)。
+
+- `mlbstats`为许多棒球数据的矢量计算提供函数，包括传统的和计量的。
+
+- `baseballDBR`利用`dplyr`的后端数据库功能来建立本地数据库，镜像`Lahman`中包含的数据。像`mlbstats`一样，它也包括计算棒球数据的函数，但是是在数据框架而不是向量上。
+
+- `baseballr`包含从各种来源提取和分析棒球数据的函数，如Baseball Reference, FanGraphs, 和Baseball Savant。
+
+- `collegeballR`从[stats.ncaa.org](stats.ncaa.org)收集大多数大学体育项目的NCAA统计数据。
+
+- `GeomMLBStadiums`在ggplot2框架中绘制MLB场馆。
+
+- `openWAR`这个包有两个主要目的。1）它促进了openWAR的计算，这是一个完全开源的Wins Above Replacement（WAR）的实现，可以作为证券计量学界的参考实现；2）它从MLBAM GameDay网络应用中下载原始的XML文件，并将其处理成表格格式的逐场比赛数据。这种逐场比赛信息在精神上与`retrosheet`提供的逐场比赛数据相似，尽管在语法上不一样。那些对我们在计算`openWAR`时所作的建模选择感兴趣的人，应该查阅我们在JQAS或arXiv上关于这个问题的论文。`openWAR`的这个实现包括为每个球员构建WAR的区间估计的功能，以及将`openWAR`的点估计与[Baseball- Reference.com](Baseball- Reference.com)的rWAR进行比较。
+
+### 排球
+
+- `volleystat`包含2013-14赛季至2018-19赛季德甲联赛的比赛统计数据，数据来源于联赛网站。
+
+### 冰球
+
+- `hockey-all`包含所有冰球运动所需的数据和函数
+
+- `elite`允许用户以[相当]整洁的方式轻松获取EliteProspects的数据
+
+- `nhlapi`检索和处理开放的“NHL”API公开的数据。这包括有关球员、球队、比赛、锦标赛、选秀、排名、时间表和其他端点的信息。还提供了一个较低级别的界面，可以直接通过URL访问数据。
+
+- `nhlscrape`将比赛事件添加到数据库文件中，用于冰球比赛的统计分析。这意味着我们只想为每个要添加的比赛调用一次“NHL”API。一旦添加了比赛，我们将非常快速地检索数据，因为数据存储在本地。我们使用位于<https://statsapi.web.nhl.com/api/v1/teams>的API以及来自<https://www.nhl.com/scores/>的补充数据。其他端点可以在<https://gitlab.com/dword4/nhlapi>上找到。
+
+- `fastRhockey`用于获取和加载来自PHF<https://www.premierhockeyfederation.com/>的逐场数据和统计数据的实用工具。此外，允许访问NHL的统计API<https://www.nhl.com/>。
+
+- `FHSTR`提供来自NBC API的2022年北京奥运会的数据，该包将会持续更新数据和功能
+
+
+### 板球
+
+- `yorkr`提供基于Cricsheet数据的板球运动员和球队的统计分析功能。
+
+- `cricketr`是一个工具集，用于分析基于ESPN Cricinfo Statsguru数据的球员和球队的板球表现。
+
+- `cricketdata`包括从ESPN Cricinfo和Crickesheet两个主要来源获得国际板球数据的功能。
+
+- `howzatR`由计算各种板球统计数据的函数组成。
+
+### 垒球
+
+- `runexp`提供了估算垒球比赛得分的方法。特别的是，`runexp`围绕着使用离散马尔科夫链的理论期望值和使用多指标随机模拟的经验分布。
+
+
+### GPS追踪
+
+- `trackeR`和`trackeRapp`提供了在R中分析来自GPS跟踪设备的跑步、骑行和游泳数据的工具。这两个包允许用户整理和探索来自锻炼和比赛的数据。
+
+- `rStrava`包含从Strava API访问Strava活动数据的功能。
+
+
+
+
+
+
+

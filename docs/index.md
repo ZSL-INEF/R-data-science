@@ -1,7 +1,7 @@
 --- 
 title: "麻麻说我们可以用 R Markdown 写书了"
 author: "张三"
-date: "2022-11-11"
+date: "2022-11-17"
 documentclass: ctexbook
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike

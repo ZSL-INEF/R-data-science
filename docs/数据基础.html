@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 2 章 数据基础 | 麻麻说我们可以用 R Markdown 写书了</title>
+  <meta name="description" content="一个简单的中文书示例。" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 2 章 数据基础 | 麻麻说我们可以用 R Markdown 写书了" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="一个简单的中文书示例。" />
+  <meta name="github-repo" content="yihui/bookdown-chinese" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 2 章 数据基础 | 麻麻说我们可以用 R Markdown 写书了" />
+  
+  <meta name="twitter:description" content="一个简单的中文书示例。" />
+  
+
+<meta name="author" content="张三" />
+
+
+<meta name="date" content="2022-11-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="r语言介绍.html"/>
+<link rel="next" href="数据建模.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">中文书示例</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#致谢"><i class="fa fa-check"></i>致谢</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="r语言介绍.html"><a href="r语言介绍.html"><i class="fa fa-check"></i><b>1</b> R语言介绍</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="r语言介绍.html"><a href="r语言介绍.html#数据科学"><i class="fa fa-check"></i><b>1.1</b> 数据科学</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="r语言介绍.html"><a href="r语言介绍.html#数据科学的定义"><i class="fa fa-check"></i><b>1.1.1</b> 数据科学的定义</a></li>
+<li class="chapter" data-level="1.1.2" data-path="r语言介绍.html"><a href="r语言介绍.html#数据科学与计算机科学数理统计机器学习等概念的区别"><i class="fa fa-check"></i><b>1.1.2</b> 数据科学与计算机科学、数理统计、机器学习等概念的区别</a></li>
+<li class="chapter" data-level="1.1.3" data-path="r语言介绍.html"><a href="r语言介绍.html#数据科学的重要价值"><i class="fa fa-check"></i><b>1.1.3</b> 数据科学的重要价值</a></li>
+<li class="chapter" data-level="1.1.4" data-path="r语言介绍.html"><a href="r语言介绍.html#数据科学的生命周期"><i class="fa fa-check"></i><b>1.1.4</b> 数据科学的生命周期</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="r语言介绍.html"><a href="r语言介绍.html#r语言简介与rstudio"><i class="fa fa-check"></i><b>1.2</b> R语言简介与Rstudio</a></li>
+<li class="chapter" data-level="1.3" data-path="r语言介绍.html"><a href="r语言介绍.html#tidyverse简介"><i class="fa fa-check"></i><b>1.3</b> Tidyverse简介</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="r语言介绍.html"><a href="r语言介绍.html#数据可视化和探索"><i class="fa fa-check"></i><b>1.3.1</b> 数据可视化和探索</a></li>
+<li class="chapter" data-level="1.3.2" data-path="r语言介绍.html"><a href="r语言介绍.html#数据处理和转换"><i class="fa fa-check"></i><b>1.3.2</b> 数据处理和转换</a></li>
+<li class="chapter" data-level="1.3.3" data-path="r语言介绍.html"><a href="r语言介绍.html#数据导入和管理"><i class="fa fa-check"></i><b>1.3.3</b> 数据导入和管理</a></li>
+<li class="chapter" data-level="1.3.4" data-path="r语言介绍.html"><a href="r语言介绍.html#功能性编程"><i class="fa fa-check"></i><b>1.3.4</b> 功能性编程</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="r语言介绍.html"><a href="r语言介绍.html#r语言包"><i class="fa fa-check"></i><b>1.4</b> R语言包</a></li>
+<li class="chapter" data-level="1.5" data-path="r语言介绍.html"><a href="r语言介绍.html#r语言常用快捷键"><i class="fa fa-check"></i><b>1.5</b> R语言常用快捷键</a></li>
+<li class="chapter" data-level="1.6" data-path="r语言介绍.html"><a href="r语言介绍.html#数据分析与挖掘流程"><i class="fa fa-check"></i><b>1.6</b> 数据分析与挖掘流程</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="r语言介绍.html"><a href="r语言介绍.html#数据分析"><i class="fa fa-check"></i><b>1.6.1</b> 数据分析</a></li>
+<li class="chapter" data-level="1.6.2" data-path="r语言介绍.html"><a href="r语言介绍.html#数据分析流程"><i class="fa fa-check"></i><b>1.6.2</b> 数据分析流程</a></li>
+<li class="chapter" data-level="1.6.3" data-path="r语言介绍.html"><a href="r语言介绍.html#数据挖掘"><i class="fa fa-check"></i><b>1.6.3</b> 数据挖掘</a></li>
+<li class="chapter" data-level="1.6.4" data-path="r语言介绍.html"><a href="r语言介绍.html#数据挖掘流程"><i class="fa fa-check"></i><b>1.6.4</b> 数据挖掘流程</a></li>
+<li class="chapter" data-level="1.6.5" data-path="r语言介绍.html"><a href="r语言介绍.html#数据分析与数据挖掘的比较"><i class="fa fa-check"></i><b>1.6.5</b> 数据分析与数据挖掘的比较</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="数据基础.html"><a href="数据基础.html"><i class="fa fa-check"></i><b>2</b> 数据基础</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="数据基础.html"><a href="数据基础.html#数据类型"><i class="fa fa-check"></i><b>2.1</b> 数据类型</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="数据基础.html"><a href="数据基础.html#概述"><i class="fa fa-check"></i><b>2.1.1</b> 概述</a></li>
+<li class="chapter" data-level="2.1.2" data-path="数据基础.html"><a href="数据基础.html#六种常见的数据类型"><i class="fa fa-check"></i><b>2.1.2</b> 六种常见的数据类型</a></li>
+<li class="chapter" data-level="2.1.3" data-path="数据基础.html"><a href="数据基础.html#特殊日期型date"><i class="fa fa-check"></i><b>2.1.3</b> 特殊：日期型（date）</a></li>
+<li class="chapter" data-level="2.1.4" data-path="数据基础.html"><a href="数据基础.html#查看数据类型"><i class="fa fa-check"></i><b>2.1.4</b> 查看数据类型</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="数据基础.html"><a href="数据基础.html#控制语句"><i class="fa fa-check"></i><b>2.2</b> 控制语句</a></li>
+<li class="chapter" data-level="2.3" data-path="数据基础.html"><a href="数据基础.html#数据导入与导出"><i class="fa fa-check"></i><b>2.3</b> 数据导入与导出</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="数据基础.html"><a href="数据基础.html#数据导入"><i class="fa fa-check"></i><b>2.3.1</b> 数据导入</a></li>
+<li class="chapter" data-level="2.3.2" data-path="数据基础.html"><a href="数据基础.html#数据导出"><i class="fa fa-check"></i><b>2.3.2</b> 数据导出</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="数据建模.html"><a href="数据建模.html"><i class="fa fa-check"></i><b>3</b> 数据建模</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="数据建模.html"><a href="数据建模.html#关系统计"><i class="fa fa-check"></i><b>3.1</b> 关系统计</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="数据建模.html"><a href="数据建模.html#相关分析"><i class="fa fa-check"></i><b>3.1.1</b> 相关分析</a></li>
+<li class="chapter" data-level="3.1.2" data-path="数据建模.html"><a href="数据建模.html#一元与多元回归"><i class="fa fa-check"></i><b>3.1.2</b> 一元与多元回归</a></li>
+<li class="chapter" data-level="3.1.3" data-path="数据建模.html"><a href="数据建模.html#普通最小二乘法回归"><i class="fa fa-check"></i><b>3.1.3</b> 普通最小二乘法回归</a></li>
+<li class="chapter" data-level="3.1.4" data-path="数据建模.html"><a href="数据建模.html#多重共线性及其处理"><i class="fa fa-check"></i><b>3.1.4</b> 多重共线性及其处理</a></li>
+<li class="chapter" data-level="3.1.5" data-path="数据建模.html"><a href="数据建模.html#相对重要性和模型比较"><i class="fa fa-check"></i><b>3.1.5</b> 相对重要性和模型比较</a></li>
+<li class="chapter" data-level="3.1.6" data-path="数据建模.html"><a href="数据建模.html#logistic回归"><i class="fa fa-check"></i><b>3.1.6</b> Logistic回归</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="数据可视化.html"><a href="数据可视化.html"><i class="fa fa-check"></i><b>4</b> 数据可视化</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="数据可视化.html"><a href="数据可视化.html#r语言中的图形系统"><i class="fa fa-check"></i><b>4.1</b> R语言中的图形系统</a></li>
+<li class="chapter" data-level="4.2" data-path="数据可视化.html"><a href="数据可视化.html#ggplot2语法结构七层结构"><i class="fa fa-check"></i><b>4.2</b> ggplot2语法结构——七层结构</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="数据可视化.html"><a href="数据可视化.html#第一层数据data"><i class="fa fa-check"></i><b>4.2.1</b> 第一层：数据（Data）</a></li>
+<li class="chapter" data-level="4.2.2" data-path="数据可视化.html"><a href="数据可视化.html#第二层视觉映射aesthetics"><i class="fa fa-check"></i><b>4.2.2</b> 第二层：视觉映射（Aesthetics）</a></li>
+<li class="chapter" data-level="4.2.3" data-path="数据可视化.html"><a href="数据可视化.html#第三层几何对象geometries"><i class="fa fa-check"></i><b>4.2.3</b> 第三层：几何对象（Geometries）</a></li>
+<li class="chapter" data-level="4.2.4" data-path="数据可视化.html"><a href="数据可视化.html#分面facet"><i class="fa fa-check"></i><b>4.2.4</b> 分面（facet）</a></li>
+<li class="chapter" data-level="4.2.5" data-path="数据可视化.html"><a href="数据可视化.html#第五层统计变换stat"><i class="fa fa-check"></i><b>4.2.5</b> 第五层：统计变换（stat）</a></li>
+<li class="chapter" data-level="4.2.6" data-path="数据可视化.html"><a href="数据可视化.html#第六层坐标系统coordinate与scale"><i class="fa fa-check"></i><b>4.2.6</b> 第六层：坐标系统（Coordinate与scale）</a></li>
+<li class="chapter" data-level="4.2.7" data-path="数据可视化.html"><a href="数据可视化.html#第七层主题theme"><i class="fa fa-check"></i><b>4.2.7</b> 第七层：主题（Theme）</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="数据可视化.html"><a href="数据可视化.html#可视化图形的基本类型"><i class="fa fa-check"></i><b>4.3</b> 可视化图形的基本类型</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="数据可视化.html"><a href="数据可视化.html#对比图"><i class="fa fa-check"></i><b>4.3.1</b> 对比图</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="数据交流.html"><a href="数据交流.html"><i class="fa fa-check"></i><b>5</b> 数据交流</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="数据交流.html"><a href="数据交流.html#r-markdown"><i class="fa fa-check"></i><b>5.1</b> R markdown</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="数据交流.html"><a href="数据交流.html#markdown介绍"><i class="fa fa-check"></i><b>5.1.1</b> Markdown介绍</a></li>
+<li class="chapter" data-level="5.1.2" data-path="数据交流.html"><a href="数据交流.html#markdown的优越性"><i class="fa fa-check"></i><b>5.1.2</b> Markdown的优越性</a></li>
+<li class="chapter" data-level="5.1.3" data-path="数据交流.html"><a href="数据交流.html#markdown语法介绍"><i class="fa fa-check"></i><b>5.1.3</b> Markdown语法介绍</a></li>
+<li class="chapter" data-level="5.1.4" data-path="数据交流.html"><a href="数据交流.html#从markdown到r-markdown"><i class="fa fa-check"></i><b>5.1.4</b> 从Markdown到R markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="数据交流.html"><a href="数据交流.html#r-shiny"><i class="fa fa-check"></i><b>5.2</b> R shiny</a></li>
+<li class="chapter" data-level="5.3" data-path="数据交流.html"><a href="数据交流.html#r-bookdown"><i class="fa fa-check"></i><b>5.3</b> R bookdown</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="数据交流.html"><a href="数据交流.html#介绍"><i class="fa fa-check"></i><b>5.3.1</b> 介绍</a></li>
+<li class="chapter" data-level="5.3.2" data-path="数据交流.html"><a href="数据交流.html#章节结构"><i class="fa fa-check"></i><b>5.3.2</b> 章节结构</a></li>
+<li class="chapter" data-level="5.3.3" data-path="数据交流.html"><a href="数据交流.html#书的编译"><i class="fa fa-check"></i><b>5.3.3</b> 书的编译</a></li>
+<li class="chapter" data-level="5.3.4" data-path="数据交流.html"><a href="数据交流.html#交叉引用"><i class="fa fa-check"></i><b>5.3.4</b> 交叉引用</a></li>
+<li class="chapter" data-level="5.3.5" data-path="数据交流.html"><a href="数据交流.html#数学公式和公式编号"><i class="fa fa-check"></i><b>5.3.5</b> 数学公式和公式编号</a></li>
+<li class="chapter" data-level="5.3.6" data-path="数据交流.html"><a href="数据交流.html#定理类编号"><i class="fa fa-check"></i><b>5.3.6</b> 定理类编号</a></li>
+<li class="chapter" data-level="5.3.7" data-path="数据交流.html"><a href="数据交流.html#文献引用"><i class="fa fa-check"></i><b>5.3.7</b> 文献引用</a></li>
+<li class="chapter" data-level="5.3.8" data-path="数据交流.html"><a href="数据交流.html#插图"><i class="fa fa-check"></i><b>5.3.8</b> 插图</a></li>
+<li class="chapter" data-level="5.3.9" data-path="数据交流.html"><a href="数据交流.html#markdown表格"><i class="fa fa-check"></i><b>5.3.9</b> Markdown表格</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="数据交流.html"><a href="数据交流.html#r-blogdown博客"><i class="fa fa-check"></i><b>5.4</b> R blogdown（博客）</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="数据交流.html"><a href="数据交流.html#r-blogdown-简介"><i class="fa fa-check"></i><b>5.4.1</b> R blogdown 简介</a></li>
+<li class="chapter" data-level="5.4.2" data-path="数据交流.html"><a href="数据交流.html#r-blogdown安装"><i class="fa fa-check"></i><b>5.4.2</b> R blogdown安装</a></li>
+<li class="chapter" data-level="5.4.3" data-path="数据交流.html"><a href="数据交流.html#用-r-blogdown-搭建个人博客"><i class="fa fa-check"></i><b>5.4.3</b> 用 R blogdown 搭建个人博客</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="数据交流.html"><a href="数据交流.html#r的个人简历制作"><i class="fa fa-check"></i><b>5.5</b> R的个人简历制作</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="数据交流.html"><a href="数据交流.html#安装vitae包"><i class="fa fa-check"></i><b>5.5.1</b> 安装<code>vitae</code>包</a></li>
+<li class="chapter" data-level="5.5.2" data-path="数据交流.html"><a href="数据交流.html#从模板创建简历"><i class="fa fa-check"></i><b>5.5.2</b> 从模板创建简历</a></li>
+<li class="chapter" data-level="5.5.3" data-path="数据交流.html"><a href="数据交流.html#编辑简历"><i class="fa fa-check"></i><b>5.5.3</b> 编辑简历</a></li>
+<li class="chapter" data-level="5.5.4" data-path="数据交流.html"><a href="数据交流.html#导出简历"><i class="fa fa-check"></i><b>5.5.4</b> 导出简历</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="数据交流.html"><a href="数据交流.html#基于-r-语言的-quarto-文档教程前沿知识"><i class="fa fa-check"></i><b>5.6</b> 基于 R 语言的 Quarto 文档教程（前沿知识）</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="数据交流.html"><a href="数据交流.html#quarto文档概述"><i class="fa fa-check"></i><b>5.6.1</b> Quarto文档概述</a></li>
+<li class="chapter" data-level="5.6.2" data-path="数据交流.html"><a href="数据交流.html#r-markdown文档和quarto文档的区别"><i class="fa fa-check"></i><b>5.6.2</b> R Markdown文档和Quarto文档的区别</a></li>
+<li class="chapter" data-level="5.6.3" data-path="数据交流.html"><a href="数据交流.html#创建quarto文档"><i class="fa fa-check"></i><b>5.6.3</b> 创建Quarto文档</a></li>
+<li class="chapter" data-level="5.6.4" data-path="数据交流.html"><a href="数据交流.html#quarto文档的内容"><i class="fa fa-check"></i><b>5.6.4</b> Quarto文档的内容</a></li>
+<li class="chapter" data-level="5.6.5" data-path="数据交流.html"><a href="数据交流.html#渲染和预览"><i class="fa fa-check"></i><b>5.6.5</b> 渲染和预览</a></li>
+<li class="chapter" data-level="5.6.6" data-path="数据交流.html"><a href="数据交流.html#工作方式"><i class="fa fa-check"></i><b>5.6.6</b> 工作方式</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html"><i class="fa fa-check"></i><b>6</b> 体育运动科学领域的专业R包</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#个人运动项目r包"><i class="fa fa-check"></i><b>6.1</b> 个人运动项目R包</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#游泳"><i class="fa fa-check"></i><b>6.1.1</b> 游泳</a></li>
+<li class="chapter" data-level="6.1.2" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#田径"><i class="fa fa-check"></i><b>6.1.2</b> 田径</a></li>
+<li class="chapter" data-level="6.1.3" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#赛车f1"><i class="fa fa-check"></i><b>6.1.3</b> 赛车F1</a></li>
+<li class="chapter" data-level="6.1.4" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#电子竞技"><i class="fa fa-check"></i><b>6.1.4</b> 电子竞技</a></li>
+<li class="chapter" data-level="6.1.5" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#国际象棋"><i class="fa fa-check"></i><b>6.1.5</b> 国际象棋</a></li>
+<li class="chapter" data-level="6.1.6" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#科学化运动训练监控"><i class="fa fa-check"></i><b>6.1.6</b> 科学化运动训练监控</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#团体运动项目r包"><i class="fa fa-check"></i><b>6.2</b> 团体运动项目R包</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#篮球"><i class="fa fa-check"></i><b>6.2.1</b> 篮球</a></li>
+<li class="chapter" data-level="6.2.2" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#足球"><i class="fa fa-check"></i><b>6.2.2</b> 足球</a></li>
+<li class="chapter" data-level="6.2.3" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#橄榄球"><i class="fa fa-check"></i><b>6.2.3</b> 橄榄球</a></li>
+<li class="chapter" data-level="6.2.4" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#澳式足球"><i class="fa fa-check"></i><b>6.2.4</b> 澳式足球</a></li>
+<li class="chapter" data-level="6.2.5" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#棒球"><i class="fa fa-check"></i><b>6.2.5</b> 棒球</a></li>
+<li class="chapter" data-level="6.2.6" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#排球"><i class="fa fa-check"></i><b>6.2.6</b> 排球</a></li>
+<li class="chapter" data-level="6.2.7" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#冰球"><i class="fa fa-check"></i><b>6.2.7</b> 冰球</a></li>
+<li class="chapter" data-level="6.2.8" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#板球"><i class="fa fa-check"></i><b>6.2.8</b> 板球</a></li>
+<li class="chapter" data-level="6.2.9" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#垒球"><i class="fa fa-check"></i><b>6.2.9</b> 垒球</a></li>
+<li class="chapter" data-level="6.2.10" data-path="体育运动科学领域的专业r包.html"><a href="体育运动科学领域的专业r包.html#gps追踪"><i class="fa fa-check"></i><b>6.2.10</b> GPS追踪</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">本书由 bookdown 强力驱动</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">麻麻说我们可以用 R Markdown 写书了</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="数据基础" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">第 2 章</span> 数据基础<a href="数据基础.html#数据基础" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="数据类型" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> 数据类型<a href="数据基础.html#数据类型" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="概述" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> 概述<a href="数据基础.html#概述" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>数据类型指的是用于声明不同类型的变量或函数的一个广泛的系统。 变量的类型决定了变量存储占用的空间，以及如何解释存储的位模式。</p>
+</div>
+<div id="六种常见的数据类型" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> 六种常见的数据类型<a href="数据基础.html#六种常见的数据类型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R语言中常见的数据类型有6种：</p>
+<table>
+<colgroup>
+<col width="23%" />
+<col width="29%" />
+<col width="23%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>数据类型</th>
+<th>示例</th>
+<th>验证代码</th>
+<th>输出结果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>数值型（numeric）</td>
+<td>5，10.5，999，2.3e-10（科学计数法）</td>
+<td><code>x &lt;- 100;class(x)</code></td>
+<td><code>[1] "numeric"</code></td>
+</tr>
+<tr class="even">
+<td>整数型（integer）</td>
+<td>2L，34L，0L</td>
+<td><code>x &lt;- 2L;class(x)</code></td>
+<td><code>[1] "integer"</code></td>
+</tr>
+<tr class="odd">
+<td>字符型（character）</td>
+<td>‘a’ , ‘“good”, “TRUE”, ’100’</td>
+<td><code>x &lt;- "TRUE";class(x)</code></td>
+<td><code>[1] "character"</code></td>
+</tr>
+<tr class="even">
+<td>逻辑型（logical）</td>
+<td>TRUE, FALSE</td>
+<td><code>x &lt;- TRUE;class(x)</code></td>
+<td><code>[1] "logical"</code></td>
+</tr>
+<tr class="odd">
+<td>复数型（complex）</td>
+<td>3 + 2i</td>
+<td><code>x &lt;- 3+2i;class(x)</code></td>
+<td><code>[1] "complex"</code></td>
+</tr>
+<tr class="even">
+<td>原始型（raw）</td>
+<td>“Hello”存储值为:48 65 6c 6c 6f</td>
+<td><code>x &lt;- charToRaw("Hello");class(x)</code></td>
+<td><code>[1] "raw"</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="特殊日期型date" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> 特殊：日期型（date）<a href="数据基础.html#特殊日期型date" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>除以上6种常见的数据类型外，我们经常会遇到时间序列数据，那就需要了解日期型（date）数据，最常用的日期型数据类型有两种：</p>
+<ol style="list-style-type: decimal">
+<li>Date（仅存储日期）</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="数据基础.html#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&quot;2022-10-27&quot;</span>)</span>
+<span id="cb3-2"><a href="数据基础.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>POSIXct（同时存储日期和时间）</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="数据基础.html#cb5-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span><span class="fu">as.POSIXct</span>(<span class="st">&quot;2022-10-27 21:55&quot;</span>)</span>
+<span id="cb5-2"><a href="数据基础.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span></code></pre></div>
+<pre><code>## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre>
+</div>
+<div id="查看数据类型" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> 查看数据类型<a href="数据基础.html#查看数据类型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>如果想要查看数据的类型，可以使用class函数：<code>class(x)</code></p>
+</div>
+</div>
+<div id="控制语句" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> 控制语句<a href="数据基础.html#控制语句" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>编程语言最基本也是最常见的三种控制结构分别是顺序、分支和循环结构。在R语言中，顺序结构通过代码的前后顺序直接决定，而分支结构和循环结构就需要对应的控制语句来实现。</p>
+<p>其中关于分支结构，R中最常见的分支控制语句就是if……else，用于对逻辑语句进行判断，从而决定执行不同的代码，实现逻辑分支。逻辑语句中最常见的形式就是比较，比如等于(=)，不等于(!=)，大于(&gt;)，大于等于(&gt;=)，小于()&lt;
+，小于等于(&lt;=)。if……else中对应逻辑条件下的业务代码都需要放置于{}中，而且else必须和if条件分支对应的右花括号处于一行，否则将导致程序出现无法识别的错误。R语言可以通过<code>ifelse()</code>对分支语句进行简化，比如可以对下表中的if……else语句简化化为: <code>ifelse(i&gt;3, print("Yes"), print("No"))</code>。此外，<code>ifelse()</code>可以实现向量化，比如通过结合transform()函数对数据框中的每一个元素进行判别运算从而生成新列。</p>
+<p>R中对循环逻辑的控制语句包括两种，最常用的一种是for循环，如下表所示，该循环的每次执行可以取出循环向量中的每一个元素，并执行花括号中的语句，直到所有的元素都取完为止。其中循环的向量不局限于连续型向量，还可以选择其他任意向量。另外一种循环是while循环，其通过设置一个判定条件，每次执行完循环体中的语句后都通过判断此条件来决定是否执行下一次循环，这种循环容易因条件设置不当而陷入“死循环”。R语言为循环逻辑的控制还提供了break语句和next语句，它们只能够用于循环结构中，其中break语句代表退出循环体，next语句代表跳过本次循环，直接进行下一次循环(的条件判断)。</p>
+<p align="center">
+<img  src="figures/control-table.png" align="center">
+</p>
+</div>
+<div id="数据导入与导出" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> 数据导入与导出<a href="数据基础.html#数据导入与导出" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="数据导入" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> 数据导入<a href="数据基础.html#数据导入" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R中可导入各种数据源的数据，包括键盘、文本文件、Excel和Access、统计软件、数据库管理系统、专业数据库、网站和在线服务等。下面介绍几种常用的导入方式。</p>
+<div id="使用键盘输入数据" class="section level4 hasAnchor" number="2.3.1.1">
+<h4><span class="header-section-number">2.3.1.1</span> 使用键盘输入数据<a href="数据基础.html#使用键盘输入数据" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>使用<code>edit()</code>函数会自动调用一个允许手动输入数据的文本编辑器。具体步骤如下：</p>
+<ol style="list-style-type: decimal">
+<li><p>创建一个空数据框（或矩阵），其中变量名和变量的模式需与理想中的最终数据集一致；</p></li>
+<li><p>针对这个数据对象调用文本编辑器（如下图），输入你的数据，并将结果保存回此对象中。</p></li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="数据基础.html#cb7-1" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">age=</span><span class="fu">numeric</span>(<span class="dv">0</span>),<span class="at">gender=</span><span class="fu">character</span>(<span class="dv">0</span>),<span class="at">weight=</span><span class="fu">numeric</span>(<span class="dv">0</span>))</span>
+<span id="cb7-2"><a href="数据基础.html#cb7-2" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> <span class="fu">edit</span>(mydata)</span></code></pre></div>
+<p><img src="figures/020400-1.png" align="center" width="241" /></p>
+<p>需要特别注意的是，如果您的操作系统为macOS，需要前往<a href="https://www.xquartz.org/" class="uri">https://www.xquartz.org/</a>手动下载安装XQuartz，才能正常调用<code>edit()</code>函数。</p>
+</div>
+<div id="读取excel数据" class="section level4 hasAnchor" number="2.3.1.2">
+<h4><span class="header-section-number">2.3.1.2</span> 读取Excel数据<a href="数据基础.html#读取excel数据" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>R虽然可以导入SPSS、SAS和Stata软件的数据，但是最好的数据导入方法还是导入经过初步处理的原始数据，而不是导入可能经过另一种统计软件处理过的数据。</p>
+<p>读取Excel数据可以使用<code>read.xlsx()</code>函数，但最好的方式则是将Excel转化为csv，然后将csv数据导入到R中。</p>
+<p>Excel数据一般为.xlsx和.xls格式，可以通过文件-另存为-保存类型-选择保存为csv文件，然后将csv文件复制到R工作目录中去。</p>
+<p>下面讲解怎么从csv文件中读取数据。</p>
+<div id="方法一read.table函数" class="section level5 hasAnchor" number="2.3.1.2.1">
+<h5><span class="header-section-number">2.3.1.2.1</span> 方法一：<code>read.table()</code>函数<a href="数据基础.html#方法一read.table函数" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>可以使用<code>read.table()</code>函数将带分隔符的文本文件中导入R中。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="数据基础.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.table</span>(file, <span class="at">header =</span> <span class="cn">FALSE</span>,<span class="at">sep =</span> <span class="st">&quot;&quot;</span>, <span class="at">quote =</span> <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&#39;&quot;</span>,</span>
+<span id="cb8-2"><a href="数据基础.html#cb8-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">numerals =</span> <span class="fu">c</span>(<span class="st">&quot;allow.loss&quot;</span>, <span class="st">&quot;warn.loss&quot;</span>, <span class="st">&quot;no.loss&quot;</span>),</span>
+<span id="cb8-3"><a href="数据基础.html#cb8-3" aria-hidden="true" tabindex="-1"></a>           row.names, col.names, <span class="at">as.is =</span> <span class="sc">!</span>stringsAsFactors,</span>
+<span id="cb8-4"><a href="数据基础.html#cb8-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">na.strings =</span> <span class="st">&quot;NA&quot;</span>,<span class="at">colClasses =</span> <span class="cn">NA</span>, <span class="at">nrows =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb8-5"><a href="数据基础.html#cb8-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">skip =</span> <span class="dv">0</span>, <span class="at">check.names =</span> <span class="cn">TRUE</span>, <span class="at">fill =</span> <span class="sc">!</span>blank.lines.skip,</span>
+<span id="cb8-6"><a href="数据基础.html#cb8-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">strip.white =</span> <span class="cn">FALSE</span>, <span class="at">blank.lines.skip =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb8-7"><a href="数据基础.html#cb8-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">comment.char =</span> <span class="st">&quot;#&quot;</span>,<span class="at">allowEscapes =</span> <span class="cn">FALSE</span>, <span class="at">flush =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb8-8"><a href="数据基础.html#cb8-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">stringsAsFactors =</span> <span class="fu">default.stringsAsFactors</span>(),</span>
+<span id="cb8-9"><a href="数据基础.html#cb8-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">fileEncoding =</span> <span class="st">&quot;&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;unknown&quot;</span>, text, <span class="at">skipNul =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>部分参数释义:</p>
+<ol style="list-style-type: decimal">
+<li><p><code>file</code> # 要读取的数据文件名(将文件名包含在”“内)。如果数据文件不在R工作目录里，需要使用全路径，所以建议放在工作目录中。</p></li>
+<li><p><code>header</code> # 逻辑值；数据文件的第一行是否为变量名；</p></li>
+<li><p><code>sep</code> # 分开数据的分隔符；默认为空白”“。</p></li>
+</ol>
+<ul>
+<li><p>使用<code>sep=","</code>则读取用逗号分隔行内数据的文件；</p></li>
+<li><p>使用<code>sep="\t"</code>则读取用制表符分割行内数据的文件。</p></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><p><code>quote</code> # 指定用于包围字符型数据的字符，默认双引号(““)或单引号(’’)</p></li>
+<li><p><code>dec</code> # 用来表示小数点的符号。</p></li>
+<li><p><code>row.names</code> # 指定行名的向量，或文件中一个变量的序号或名字,默认行号取为1, 2, 3…,</p></li>
+<li><p><code>col.names</code> # 如果数据文件的第一行不包括变量名(<code>header=FASLE</code>)，则可以用<code>col.names</code>去指定一个包含变量名的字符向量。如果<code>header=FALSE</code>以及<code>col.names</code>选项被省略了，则变量分别命名为V1、V2、V3…</p></li>
+<li><p><code>as.is</code> # 逻辑词；为<code>FALSE</code>，则将字符型变量转为因子型变量，为<code>TRUE</code>，则仍将其保留为字符型（<code>TRUE</code>）。也可以是逻辑型、数字型、或字符向量用来指定哪些列不需要转化为因子。</p></li>
+<li><p><code>na.strings</code> # 表示缺失值的字符向量。如<code>na.strings=c("-9","?")</code>，表示在读取数据时，会把-9和?值转换成NA。</p></li>
+<li><p><code>colClasses</code> # 指定各列变量数据类型的一个字符型向量。如<code>colClasses=c("numeric","numeric","character","NULL","numeric")</code>，前两列读取为数值型，第三列读取为字符型，跳过第四列，第五列读取为数值型。如果数据有多余五列，<code>colClasses</code>的值会被循环。在读取大型文本文件时，指定<code>colClasses</code>参数可以提升处理速度。</p></li>
+<li><p><code>nrows</code> # 可以读取的最大行数(忽略负值)。</p></li>
+<li><p><code>skip</code> # 在读取数据前跳过的行数。</p></li>
+<li><p><code>check.names</code> # 如果为<code>TRUE</code>，则检查变量名是否在R中有效。</p></li>
+<li><p><code>fill</code> # 某些情况下，文件中各行的长度不相等，这个参数是个逻辑词，设置<code>read.table</code>在某些值缺失的情况下，是否自动添加空白值。</p></li>
+<li><p><code>strip.white</code># 在<code>sep</code>指定情况下，为<code>TRUE</code>，则删除字符型变量前后多余空格。</p></li>
+<li><p><code>stringsAsFactors</code> # 逻辑词，标记处字符向量是否需要转化成因子。默认值是<code>TRUE</code>，除非它被<code>colClases</code>所覆盖。在处理大型文本文件时，设置成<code>stringsAsFactors=FALSE</code>可以提升处理速度。</p></li>
+<li><p><code>text</code> # 一个指定文字进行处理的字符串。如果<code>text</code>被设置了，<code>file</code>应该被留空。</p></li>
+<li><p><code>blank.lines.skip</code> # 逻辑词；为<code>TRUE</code>，忽略空白行。</p></li>
+<li><p><code>comment.char</code> # 默认情况下，<code>comment.char</code>把符号”#“后的任何文字当作注释；可以改变<code>comment.char = "符号"</code>来改变注释字符；如果数据中不包括任何注释，设置<code>comment.char=""</code>可以加快读取速度。</p></li>
+<li><p><code>flush</code> # 逻辑词；在所有字段都已读入的情况下，是否应该跳到下一行。</p></li>
+<li><p><code>allowEscapes</code> # 逻辑词；设置是否使用转义符(如”“表示转一行)，还是直接读入。</p></li>
+<li><p><code>encoding</code> # 源文件的编码格式</p></li>
+</ol>
+</div>
+<div id="方法二read.csv函数和read.csv2函数" class="section level5 hasAnchor" number="2.3.1.2.2">
+<h5><span class="header-section-number">2.3.1.2.2</span> 方法二：<code>read.csv()</code>函数和<code>read.csv2()</code>函数<a href="数据基础.html#方法二read.csv函数和read.csv2函数" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p><code>read.csv()</code>函数和<code>read.csv2()</code>函数是<code>read.table()函数</code>的两种变形，这两个函数除了默认值与<code>read.table()</code>不同以外，其他的用法与<code>read.table()</code>完全相同。</p>
+<p>两个函数的用法：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="数据基础.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(file, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">quote =</span> <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span>,</span>
+<span id="cb9-2"><a href="数据基础.html#cb9-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">comment.char =</span> <span class="st">&quot;&quot;</span>, ...)</span>
+<span id="cb9-3"><a href="数据基础.html#cb9-3" aria-hidden="true" tabindex="-1"></a>         </span>
+<span id="cb9-4"><a href="数据基础.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv2</span>(file, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">quote =</span> <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span>,</span>
+<span id="cb9-5"><a href="数据基础.html#cb9-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>, <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">comment.char =</span> <span class="st">&quot;&quot;</span>, ...)   </span></code></pre></div>
+<p>从调用格式可看出，与<code>read.table()</code>不同，这两个函数默认参数都是<code>header=TRUE</code>。</p>
+<p>3个函数的差别:</p>
+<ul>
+<li><p><code>read.table()</code>函数：读取数据的分隔符为空格，小数点用点号”.”；</p></li>
+<li><p><code>read.csv()</code>函数：读取数据的分隔符为逗号，小数点用点号”.”；</p></li>
+<li><p><code>read.csv2()</code>函数：读取数据的分隔符为分号，小数点用逗号”,“。</p></li>
+</ul>
+</div>
+</div>
+<div id="读取spss数据" class="section level4 hasAnchor" number="2.3.1.3">
+<h4><span class="header-section-number">2.3.1.3</span> 读取SPSS数据<a href="数据基础.html#读取spss数据" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>foreign</code>包中的<code>read.spss()</code>函数和<code>Hmisc</code>包中的<code>spss.get()</code>函数都可以导入SPSS数据，<code>spss.get()</code>是对<code>read.spss()</code>的一个封装，可以自动设置后者的许多参数，让整个转换过程更加简单一致。</p>
+<p><code>foreign包</code>是基础包，默认安装，需要手动安装一下<code>Hmisc</code>包</p>
+<div id="read.spss函数" class="section level5 hasAnchor" number="2.3.1.3.1">
+<h5><span class="header-section-number">2.3.1.3.1</span> <code>read.spss()</code>函数<a href="数据基础.html#read.spss函数" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="数据基础.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.spss</span>(file, <span class="at">use.value.labels =</span> <span class="cn">TRUE</span>, <span class="at">to.data.frame =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb10-2"><a href="数据基础.html#cb10-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">max.value.labels =</span> <span class="cn">Inf</span>, <span class="at">trim.factor.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb10-3"><a href="数据基础.html#cb10-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">trim_values =</span> <span class="cn">TRUE</span>, <span class="at">reencode =</span> <span class="cn">NA</span>, <span class="at">use.missings =</span> to.data.frame, </span>
+<span id="cb10-4"><a href="数据基础.html#cb10-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">sub =</span> <span class="st">&quot;.&quot;</span>, <span class="at">add.undeclared.levels =</span> <span class="fu">c</span>(<span class="st">&quot;sort&quot;</span>, <span class="st">&quot;append&quot;</span>, <span class="st">&quot;no&quot;</span>),</span>
+<span id="cb10-5"><a href="数据基础.html#cb10-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">duplicated.value.labels =</span> <span class="fu">c</span>(<span class="st">&quot;append&quot;</span>, <span class="st">&quot;condense&quot;</span>),</span>
+<span id="cb10-6"><a href="数据基础.html#cb10-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">duplicated.value.labels.infix =</span> <span class="st">&quot;_duplicated_&quot;</span>, ...)</span></code></pre></div>
+<p>部分参数释义:</p>
+<ol style="list-style-type: decimal">
+<li><p><code>file</code> # 要读取的sav数据格式(将文件名包含在”“内)；如果文件不在工作目录，可能需要写入全部文件路径。</p></li>
+<li><p><code>use.value.labels</code> 逻辑词；默认为<code>TRUE</code>，表示将带有值标签的变量转换为R中的因子；为<code>FALSE</code>，则不转化为因子。</p></li>
+<li><p><code>to.data.frame</code> # 逻辑词；默认为<code>FALSE</code>，将数据读入到列表中；为<code>TRUE</code>，则将数据读入到数据框中。</p></li>
+</ol>
+</div>
+<div id="spss.get函数" class="section level5 hasAnchor" number="2.3.1.3.2">
+<h5><span class="header-section-number">2.3.1.3.2</span> <code>spss.get()</code>函数<a href="数据基础.html#spss.get函数" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="数据基础.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spss.get</span>(file, <span class="at">lowernames=</span><span class="cn">FALSE</span>, <span class="at">datevars =</span> <span class="cn">NULL</span>,</span>
+<span id="cb11-2"><a href="数据基础.html#cb11-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">use.value.labels =</span> <span class="cn">TRUE</span>, <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-3"><a href="数据基础.html#cb11-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">max.value.labels =</span> <span class="cn">Inf</span>, <span class="at">force.single=</span><span class="cn">TRUE</span>,</span>
+<span id="cb11-4"><a href="数据基础.html#cb11-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">allow=</span><span class="cn">NULL</span>, <span class="at">charfactor=</span><span class="cn">FALSE</span>, <span class="at">reencode =</span> <span class="cn">NA</span>)</span></code></pre></div>
+<p>部分参数释义:</p>
+<ol style="list-style-type: decimal">
+<li><p><code>file</code> # 要读取的sav数据格式(将文件名包含在”“内)；也可以是网络上的数据文件，以”<a href="http:/%22或%22https://%22格式表示" class="uri">http:/"或"https://"格式表示</a>；</p></li>
+<li><p><code>lowernames</code> # 逻辑词；为TRUE时将变量名称转换为小写；</p></li>
+<li><p><code>datevars</code> # 一个向量；指定哪些变量需要转换为R内部日期格式；</p></li>
+<li><p><code>use.value.labels</code> # 逻辑词；默认<code>TRUE</code>，表示将带有值标签的变量转换为R中的因子；为<code>FALSE</code>，则不转化为因子。</p></li>
+<li><p><code>to.data.frame</code> # 逻辑词；默认为<code>FALSE</code>，将数据读入到列表中；为<code>TRUE</code>，则将数据读入到数据框中。</p></li>
+<li><p><code>allow</code> # 字符向量，默认情况下，变量名称中的下划线”_“将转换为点”.”。</p></li>
+</ol>
+</div>
+</div>
+<div id="读取stata数据" class="section level4 hasAnchor" number="2.3.1.4">
+<h4><span class="header-section-number">2.3.1.4</span> 读取Stata数据<a href="数据基础.html#读取stata数据" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>可以使用<code>read_stata()</code>函数将stata数据导入到R中，调用格式为：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="数据基础.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_stata</span>(path,<span class="at">atomic.to.fac =</span> <span class="cn">FALSE</span>,<span class="at">drop.labels =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb12-2"><a href="数据基础.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">enc =</span> <span class="cn">NULL</span>,<span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>部分参数释义:</p>
+<ol style="list-style-type: decimal">
+<li><p><code>path</code> # 数据文件的路径</p></li>
+<li><p><code>atomic.to.fac</code> # 逻辑词，如为<code>TRUE</code>，则将数据集中的分类变量转换为因子</p></li>
+<li><p><code>drop.labels</code> # 逻辑词，如为<code>TRUE</code>，将删除没有使用的值标签</p></li>
+<li><p><code>enc</code> # 数据文件的字符编码</p></li>
+<li><p><code>verbose</code> # 逻辑词，如为<code>TRUE</code>，将显示导入数据的进度条</p></li>
+</ol>
+</div>
+<div id="读取sas数据" class="section level4 hasAnchor" number="2.3.1.5">
+<h4><span class="header-section-number">2.3.1.5</span> 读取SAS数据<a href="数据基础.html#读取sas数据" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>从SAS文件读入数据的方法有很多，常用比较可靠的方法是在SAS中使用<code>PROC EXPORT</code>将SAS数据集保存为一个逗号分隔的文本文件，再使用<code>read.table()</code>或<code>read.csv()</code>函数读取；也可以使用<code>foreign</code>包的<code>read.ssd()</code>函数或<code>Hmisc</code>包的<code>sas.get()</code>函数读取,具体方法与上述内容相似，在此不赘述了。</p>
+</div>
+</div>
+<div id="数据导出" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> 数据导出<a href="数据基础.html#数据导出" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R可以将R数据对象(通常是数据框或矩阵)导出到文本文件。常用的函数为<code>write.table()</code>函数</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="数据基础.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(x, <span class="at">file =</span> <span class="st">&quot;&quot;</span>, <span class="at">append =</span> <span class="cn">FALSE</span>, <span class="at">quote =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>,</span>
+<span id="cb13-2"><a href="数据基础.html#cb13-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">eol =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">na =</span> <span class="st">&quot;NA&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="at">row.names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-3"><a href="数据基础.html#cb13-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">col.names =</span> <span class="cn">TRUE</span>, <span class="at">qmethod =</span> <span class="fu">c</span>(<span class="st">&quot;escape&quot;</span>, <span class="st">&quot;double&quot;</span>),</span>
+<span id="cb13-4"><a href="数据基础.html#cb13-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">fileEncoding =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p>部分参数释义：</p>
+<ol style="list-style-type: decimal">
+<li><p><code>x</code> # 要导出的R中的对象</p></li>
+<li><p><code>file</code> # 字符值，要导出的R对象的文件名称</p></li>
+<li><p><code>append</code> # 逻辑词；为<code>TRUE</code>则将输出数据添加到现有文件的结尾；为<code>FALSE</code>则覆盖这个文件</p></li>
+<li><p><code>quote</code> # 逻辑词，默认为<code>TRUE</code>，表示将字符或因子值放入引号中；或为数值向量，指定哪些变量应该放在引号中</p></li>
+<li><p><code>sep</code> # 字符值，设置一行中分隔值的字符</p></li>
+<li><p><code>eol</code> # 字符值，设置放置在每行结尾处的字符</p></li>
+<li><p><code>na</code> # 表示缺失值NA的字符</p></li>
+<li><p><code>dec</code> # 表示小数点的字符</p></li>
+<li><p><code>row.names</code> # 逻辑词，默认为<code>TRUE</code>，设置输出中是否应该包括行名称；或数值向量，设置哪些行的名称应该输出</p></li>
+<li><p><code>col.names</code> # 逻辑词，默认为<code>TRUE</code>，设置输出中是否应该包括列名称；或字符向量，设置列名称</p></li>
+<li><p><code>qmethod</code> # 设置如何处理引用字符和因子字段中的引号。<code>"escape"</code>表示用反斜杠转义引号；<code>double</code>表示将引号转义为双引号(即把”转换成”“)</p></li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r语言介绍.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="数据建模.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yihui/bookdown-chinese/edit/master/02-Data_base.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
