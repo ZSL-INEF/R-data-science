@@ -1,7 +1,7 @@
 --- 
 title: "麻麻说我们可以用 R Markdown 写书了"
 author: "张三"
-date: "2023-01-04"
+date: "2023-01-05"
 documentclass: ctexbook
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
@@ -58,8 +58,5 @@ sessionInfo()
 
 ## 致谢 {-}
 
-非常感谢谁谁以及谁谁对我的帮助。艾玛，要不是他们神一样的队友，我两年前就写完这本书了。
-
-难以置信我慢慢就写完了这本书，感谢的人有很多，重要的是要自己的爷爷
-```
+李震帮助我今天修改R
 
